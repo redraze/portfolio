@@ -6,8 +6,8 @@ export default function FileExplorer() {
 
         <div>
             {
-                folders.map(({name, files}) => (
-                    <div>
+                folders.map(({name, files}, idx) => (
+                    <div key={idx}>
                         <div>
                             {/* toggleable dropdown icon */}
                             <span>{name}</span>
@@ -15,8 +15,8 @@ export default function FileExplorer() {
 
                         <div>
                             {
-                                files.map(({icon, name, component}) => (
-                                    <div>
+                                files.map(({icon, name, component}, idx) => (
+                                    <div key={idx}>
                                         {icon}
                                         <span>{name}</span>
                                     </div>
@@ -28,8 +28,8 @@ export default function FileExplorer() {
             }
 
             {
-                files.map(({icon, name, component}) => (
-                    <div>
+                files.map(({icon, name, component}, idx) => (
+                    <div key={idx}>
                         {icon}
                         <span>{name}</span>
                     </div>
