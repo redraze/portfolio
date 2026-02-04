@@ -3,9 +3,9 @@ import FileExplorer from "./fileexplorer";
 import LeftBar from "./leftbar";
 
 export default function MainPane() {
-    return <>
+    return <div className="flex grow">
         <LeftBar />
         <FileExplorer />
-        <Content />
-    </>
-}
+        <Content content={{ icon: <></>, filename: '' }} />
+    </div>
+};
