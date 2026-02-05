@@ -1,6 +1,6 @@
 export default function LeftBar() {
     return (
-        <nav aria-label="left-bar" className="flex flex-col justify-between bg-[#333333] w-[53px]">
+        <nav aria-label="left-bar" className="flex flex-col justify-between bg-[#333333] w-[58px]">
             <div className="*:py-[16px]">
                 {
                     elementsTop.map(({ tooltip, icon }, idx) => {

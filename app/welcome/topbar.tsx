@@ -9,7 +9,7 @@ export default function TopBar() {
                     </div>
                     {
                         elements.map((e, idx) => (
-                            <div key={idx} className={`text-[15px] text-[${styles.iconColor}] px-2 mx-[.8px]`}>{e}</div>
+                            <div key={idx} className={`text-[15px] text-[${styles.textColor}] px-2 mx-[.8px]`}>{e}</div>
                         ))
                     }    
                 </div>
@@ -62,6 +62,7 @@ const elements = [
 ];
 
 const styles = {
+    textColor: "#ffffffbf",
     iconColor: "#ffffffb1",
     arrowsColor: "#ffffff68",
     searchbarContentColor: "#ffffffbb",
