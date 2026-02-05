@@ -1,6 +1,6 @@
 export default function BottomBar() {
     return (
-        <nav aria-label="bottom-bar" className="flex justify-between bg-[#2b74c9] h-[26px] items-center ">
+        <nav aria-label="bottom-bar" className="flex justify-between bg-[#2b74c9] h-[2.6vh] min-h-[26px] items-center ">
             {/* left-hand icons */}
             <div className="flex">
                 <div className="flex items-center mx-2">
