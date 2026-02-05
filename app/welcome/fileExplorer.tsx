@@ -1,101 +1,34 @@
 import FileExplorerTopBar from "./fileExplorerTopbar";
+import Folder from "./folder";
+import File from "./file";
+import { files, folders } from "~/lib/fileStructure";
 
 export default function FileExplorer() {
-    return <nav aria-label="file-explorer" className="bg-[#252526] w-[310px]">
-        <FileExplorerTopBar />
+    return (
+        <nav aria-label="file-explorer" className="bg-[#252526] w-[15vw]">
+            <FileExplorerTopBar />
 
-        <div>
-            {
-                folders.map(({name, files}, idx) => (
-                    <div key={idx}>
-                        <div>
-                            {/* toggleable dropdown icon */}
-                            <span>{name}</span>
-                        </div>
+            <div>
+                {
+                    folders.map(({ foldername, files }, idx) => (
+                        <Folder 
+                            key={idx}
+                            foldername={foldername}
+                            files={files}
+                        />
+                    ))
+                }
 
-                        <div>
-                            {
-                                files.map(({icon, name, component}, idx) => (
-                                    <div key={idx}>
-                                        {icon}
-                                        <span>{name}</span>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-                ))
-            }
-
-            {
-                files.map(({icon, name, component}, idx) => (
-                    <div key={idx}>
-                        {icon}
-                        <span>{name}</span>
-                    </div>
-                ))
-            }
-        </div>
-    </nav>
-}
-
-const folders = [
-    // {        
-    //     name: '.games',
-    //     files: [
-    //         {
-    //             name: 'tetris',
-    //             icon: '',
-    //             component: <></>,
-    //         },
-    //         {
-    //             name: 'snake',
-    //             icon: '',
-    //             component: <></>,
-    //         },
-    //         {
-    //             name: 'doom',
-    //             icon: '',
-    //             component: <></>,
-    //         },
-    //     ],
-    // },
-    {
-        name: 'projects',
-        files: [
-            {
-                name: 'project_1',
-                icon: '',
-                component: <></>,
-            },
-            {
-                name: 'project_2',
-                icon: '',
-                component: <></>,
-            },
-        ],
-    },
-    {
-        name: 'experience',
-        files: [
-            {
-                name: 'experience_1',
-                icon: '',
-                component: <></>,
-            },
-            {
-                name: 'experience_2',
-                icon: '',
-                component: <></>,
-            },
-        ],
-    },
-];
-
-const files = [
-    {
-        icon: '',
-        name: 'ABOUTME.md',
-        component: <></>,
-    },
-];
+                {
+                    files.map(({icon, filename, component}, idx) => (
+                        <File key={idx}
+                            icon={icon}
+                            filename={filename}
+                            component={component}
+                        />
+                    ))
+                }
+            </div>
+        </nav>
+    );
+};
