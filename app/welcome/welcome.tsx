@@ -1,6 +1,6 @@
 import TopBar from "./topbar";
-import MainPane from "./mainpane";
-import BottomBar from "./bottombar";
+import MainPane from "./mainPane";
+import BottomBar from "./bottomBar";
 
 export function Welcome() {
   return (
