@@ -5,6 +5,11 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+@font-face {
+  font-family: 'Consolas';
+  src: local('Consolas');
+}
+
 html,
 body {
   @apply bg-[#1e1e1e];
