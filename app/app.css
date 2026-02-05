@@ -15,3 +15,9 @@ body {
   @apply bg-[#1e1e1e];
   @apply text-white;
 }
+
+@layer components {
+  .top-toolbar-height {
+    @apply h-[40px];
+  }
+}
