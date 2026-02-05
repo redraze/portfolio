@@ -1,7 +1,7 @@
 import FileExplorerTopBar from "./fileExplorerTopbar";
 
 export default function FileExplorer() {
-    return <nav aria-label="file-explorer" className='bg-[#252526]'>
+    return <nav aria-label="file-explorer" className="bg-[#252526] w-[310px]">
         <FileExplorerTopBar />
 
         <div>
