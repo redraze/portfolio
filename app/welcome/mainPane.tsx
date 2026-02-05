@@ -1,5 +1,5 @@
 import Content from "./content";
-import FileExplorer from "./fileexplorer";
+import FileExplorer from "./fileExplorer";
 import LeftBar from "./leftbar";
 
 export default function MainPane() {
