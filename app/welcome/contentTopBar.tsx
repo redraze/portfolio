@@ -2,7 +2,7 @@ import type { FileType } from "~/lib/fileStructure";
 
 export default function ContentTopBar({ icon, filename }: Partial<FileType>) {
     return (
-        <nav aria-label="top-bar" className="flex justify-between bg-[#252526] w-[100%] h-[3.6vh]">
+        <nav aria-label="top-bar" className="flex justify-between bg-[#252526] w-[100%] h-[3.6vh] min-h-[36px]">
             <div className="flex bg-[#1e1e1e] justify-center items-center pl-4 pr-[6px] *:mx-1 relative">
                 {icon}
                 <span className="text-[15px] relative top-[1px]"><i>{filename}</i></span>
