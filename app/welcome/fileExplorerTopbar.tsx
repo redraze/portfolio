@@ -1,7 +1,7 @@
 export default function FileExplorerTopBar() {
     return <nav aria-label="file-explorer-top-bar">
         <div className="flex items-center justify-between h-10">
-            <span className={`text-[13px] mx-5 text-[${styles.textColor}]`}>PORTFOLIO</span>
+            <span className="text-[13px] mx-5 text-[#ffffffaa]">PORTFOLIO</span>
             <div className="flex mr-3 *:mx-[8px]">
                 {
                     elements.map(({tooltip, icon}, idx) => (
@@ -17,7 +17,6 @@ export default function FileExplorerTopBar() {
 }
 
 const styles = {
-    textColor: "#ffffffaa",
     iconSize: 16,
     iconColor: "#ffffffce",
 };
