@@ -8,7 +8,7 @@ export default function FileExplorer() {
         <nav aria-label="file-explorer" className="bg-[#252526] w-[350px]">
             <FileExplorerTopBar />
 
-            <div className="pl-3">
+            <div>
                 {
                     folders.map(({ foldername, files }, idx) => (
                         <Folder 
@@ -24,6 +24,7 @@ export default function FileExplorer() {
                         <File 
                             key={idx}
                             content={content}
+                            level={0}
                         />
                     ))
                 }

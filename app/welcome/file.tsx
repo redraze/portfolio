@@ -3,15 +3,17 @@ import type { FileType } from "~/lib/fileStructure";
 
 type PropsType = {
     content: FileType,
-    hidden?: boolean,
+    level: number,
+    isHidden?: boolean,
 };
 
-export default function File({ content, hidden }: PropsType) {
+export default function File({ content, level, isHidden }: PropsType) {
     const currentContent = useContentStore((state) => state.content);
     const setContent = useContentStore((state) => state.setContent);
 
     const { icon, filename } = content;
     const selected = currentContent?.filename === filename;
+    const styles = level === 0 ? levelZeroStyles : levelOneStyles;
 
     return (
         <div
@@ -19,12 +21,17 @@ export default function File({ content, hidden }: PropsType) {
             onClick={() => setContent(content)}
         >
             {icon}
-            <span className={ hidden ? "hiddenText pl-2" : "normalText pl-2"}>{filename}</span>
+            <span className={ isHidden ? "hiddenText pl-[7px]" : "normalText pl-[7px]"}>{filename}</span>
         </div>
     );
 };
 
-const styles = {
-    active: "flex items-center pl-1 pb-[4px] bg-[#37373d]",
-    inactive: "flex items-center pl-1 pb-[4px]",
+const levelZeroStyles = {
+    active: "flex items-center pl-[12px] py-[2px] bg-[#37373d]",
+    inactive: "flex items-center pl-[12px] py-[2px]",
+};
+
+const levelOneStyles = {
+    active: "flex items-center pl-[24px] py-[2px] bg-[#37373d]",
+    inactive: "flex items-center pl-[24px] py-[2px]",
 };

@@ -10,7 +10,7 @@ export default function Folder({ foldername, files }: FolderType) {
 
     return (
         <div className="flex flex-col">
-            <div onClick={toggleActive} className="flex items-center pb-[4px]">
+            <div onClick={toggleActive} className="flex items-center py-[2px] pl-3">
                 {
                     active
                         ? <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffffd0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -19,13 +19,14 @@ export default function Folder({ foldername, files }: FolderType) {
                 <span className={isHidden ? "hiddenText pl-1": "normalText pl-1"}>{foldername}</span>
             </div>
 
-            <div className={active ? "pl-2" : "hidden"}>
+            <div className={active ? "" : "hidden"}>
                 {
                     files.map((content, idx) => (
                         <File 
                             key={idx}
                             content={content}
-                            hidden={isHidden}
+                            level={1}
+                            isHidden={isHidden}
                         />
                     ))
                 }
