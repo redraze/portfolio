@@ -20,11 +20,10 @@ export default function FileExplorer() {
                 }
 
                 {
-                    files.map(({icon, filename, component}, idx) => (
-                        <File key={idx}
-                            icon={icon}
-                            filename={filename}
-                            component={component}
+                    files.map((content, idx) => (
+                        <File 
+                            key={idx}
+                            content={content}
                         />
                     ))
                 }

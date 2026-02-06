@@ -1,12 +1,17 @@
-import type { FileType } from "~/lib/fileStructure";
+import { useContentStore } from "~/lib/contentStore";
+ 
+export default function MainPaneTopBar() {
+    const content = useContentStore((state) => state.content);
+    const clearContent = useContentStore((state) => state.clearContent);
 
-export default function ContentTopBar({ icon, filename }: Partial<FileType>) {
-    return (
-        <nav aria-label="top-bar" className="flex justify-between bg-[#252526] w-[100%] h-[3.6vh] min-h-[36px]">
+    return content && (
+        <nav aria-label="top-bar" className="flex justify-between bg-[#252526] grow h-[3.6vh] min-h-[36px]">
             <div className="flex bg-[#1e1e1e] justify-center items-center pl-4 pr-[6px] *:mx-1 relative">
-                {icon}
-                <span className="text-[15px] relative top-[1px]"><i>{filename}</i></span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1vw" height="1vw" viewBox="0 0 24 24" fill="none" stroke="#ffffffd2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                {content.icon}
+                <span className="text-[15px] relative top-[1px]"><i>{content.filename}</i></span>
+                <div onClick={clearContent}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#ffffffd2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
             </div>
 
             <div className="flex *:mx-[6px] mr-[16px] items-center">

@@ -21,11 +21,10 @@ export default function Folder({ foldername, files }: FolderType) {
 
             <div className={active ? "pl-2" : "hidden"}>
                 {
-                    files.map(({ icon, filename, component }, idx) => (
-                        <File key={idx}
-                            icon={icon}
-                            filename={filename}
-                            component={component}
+                    files.map((content, idx) => (
+                        <File 
+                            key={idx}
+                            content={content}
                             hidden={isHidden}
                         />
                     ))

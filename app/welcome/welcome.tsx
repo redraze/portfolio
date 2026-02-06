@@ -1,12 +1,22 @@
+import { useContentStore } from "~/lib/contentStore";
 import TopBar from "./topbar";
-import MainPane from "./mainPane";
+import LeftBar from "./leftbar";
+import FileExplorer from "./fileExplorer";
+import MainPaneTopBar from "./mainPaneTopBar";
 import BottomBar from "./bottomBar";
 
 export function Welcome() {
+  const content = useContentStore((state) => state.content);
+  
   return (
     <main className="flex flex-col min-h-screen">
       <TopBar />
-      <MainPane />
+      <div className="flex grow">
+          <LeftBar />
+          <FileExplorer />
+          <MainPaneTopBar />
+          { content && content.component }
+      </div>
       <BottomBar />
     </main>
   );
