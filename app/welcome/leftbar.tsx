@@ -1,13 +1,13 @@
 export default function LeftBar() {
     return (
         <nav aria-label="left-bar" className="flex flex-col justify-between bg-[#333333] w-[2.65vw] min-w-[58px]">
-            <div className="*:py-[1.5vh]">
+            <div className="*:py-[15px]">
                 {
                     elementsTop.map(({ tooltip, icon }, idx) => {
                         if (idx === 0) {
                             return (
-                                <div key={idx} className="flex justify-center relative border-l-[.175vw] border-white">
-                                    <div className="relative right-[.175vw]">
+                                <div key={idx} className="flex justify-center relative border-l-[3.5px] border-white">
+                                    <div className="relative right-[3.5px]">
                                         {icon}
                                     </div>
                                     {/* <span>{tooltip}</span> */}
@@ -25,7 +25,7 @@ export default function LeftBar() {
                 }
             </div>
 
-            <div className="*:px-auto *:py-[1.5vh]">
+            <div className="*:px-auto *:py-[15px]">
                 {
                     elementsBot.map(({ tooltip, icon }, idx) => (
                         <div key={idx} className="flex justify-center">
