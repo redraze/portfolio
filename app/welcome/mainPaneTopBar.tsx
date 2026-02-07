@@ -6,14 +6,17 @@ export default function MainPaneTopBar() {
 
     return content && (
         <nav aria-label="top-bar" className="flex justify-between bg-[#252526] grow h-[3.6vh] min-h-[36px]">
-            <div className="flex bg-[#1e1e1e] justify-center items-center pl-4 pr-[6px] *:mx-1 relative">
+            {/* file tab */}
+            <div className="flex bg-[#1e1e1e] justify-center items-center pl-4 pr-[6px] *:mx-1 relative cursor-pointer">
                 {content.icon}
                 <span className="text-[15px] relative top-[1px]"><i>{content.filename}</i></span>
-                <div onClick={clearContent}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#ffffffd2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <div onClick={clearContent} className="group relative flex justify-center hover:bg-[#ffffff15] p-[2px] rounded-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <span className="hidden group-hover:flex absolute w-min whitespace-nowrap top-[22.5px] px-2 py-[2px] border-1 border-[#ffffff30] rounded-sm text-[13.5px] normalText">Close (Ctrl + F4)</span>
                 </div>
             </div>
 
+            {/* right-hand icons */}
             <div className="flex pr-[11px] relative">
                 {
                     elements.map(({ icon, tooltips }, idx) => (
