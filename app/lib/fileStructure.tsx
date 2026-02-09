@@ -69,7 +69,7 @@ export const folders: FolderType[] = [
 
 export const files: FileType[] = [
     {
-        icon: <span className="text-[#c7ce4d]"><b>{"{ }"}</b></span>,
+        icon: <span className="text-[#c7ce4d] text-[16px]"><span className="mr-[2px]">{"{"}</span><span>{"}"}</span></span>,
         filename: "technologies.json",
         component: <></>,
     },

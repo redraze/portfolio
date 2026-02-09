@@ -33,7 +33,7 @@ export default function BottomBar() {
             </div>
 
             {/* right-hand icons */}
-            <div className="flex *:text-[14px] *:mx-[7.5px]">
+            <div className="flex items-center *:text-[13.5px] *:mx-[8px]">
                 {content && <BottomBarDeatils
                     filename={content.filename}
                 />}
