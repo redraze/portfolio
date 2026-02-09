@@ -14,7 +14,7 @@ export function Welcome() {
       <div className="flex grow">
           <LeftBar />
           <FileExplorer />
-          <MainPaneTopBar />
+          { content && <MainPaneTopBar content={content} /> }
           { content && content.component }
       </div>
       <BottomBar />
