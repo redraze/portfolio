@@ -1,4 +1,9 @@
+import { useContentStore } from "~/lib/contentStore";
+import BottomBarDeatils from "./bottomBarDetails";
+
 export default function BottomBar() {
+    const content = useContentStore((state) => state.content);
+
     return (
         <nav aria-label="bottom-bar" className="flex justify-between bg-[#2b74c9] h-[2.6vh] min-h-[26px] items-center ">
             {/* left-hand icons */}
@@ -29,11 +34,9 @@ export default function BottomBar() {
 
             {/* right-hand icons */}
             <div className="flex *:text-[14px] *:mx-[7.5px]">
-                <span>Ln 11, Col 40</span>
-                <span>Spaces: 4</span>
-                <span>UTF-8</span>
-                <span>CRLF</span>
-                <span><b>{"{ }"}</b> TypeScript JSX</span>
+                {content && <BottomBarDeatils 
+                    content={content}
+                />}
                 <div className="flex">
                     <div className="flex items-center mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={styles.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
