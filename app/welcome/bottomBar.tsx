@@ -34,8 +34,8 @@ export default function BottomBar() {
 
             {/* right-hand icons */}
             <div className="flex *:text-[14px] *:mx-[7.5px]">
-                {content && <BottomBarDeatils 
-                    content={content}
+                {content && <BottomBarDeatils
+                    filename={content.filename}
                 />}
                 <div className="flex">
                     <div className="flex items-center mr-1">

@@ -1,12 +1,10 @@
-import type { FileType } from "~/lib/fileStructure";
-
 const languageMatrix = new Map();
 languageMatrix.set("tsx", <span><b>{"{ }"}</b> TypeScript JSX</span>);
 languageMatrix.set("json", <span><b>{"{ }"}</b> JSON</span>);
 
-export default function BottomBarDeatils({ content }: { content: FileType }) {
-    const { filename } = content;
-    const extension = filename.split('.')[1];
+export default function BottomBarDeatils({ filename }: { filename: string }) {
+    const strings = filename.split('.')[1];
+    const extension = strings[strings.length - 1];
     const language = languageMatrix.get(extension);
    
     return language && (
