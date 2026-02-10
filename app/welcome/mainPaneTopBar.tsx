@@ -44,22 +44,22 @@ export default function MainPaneTopBar({ content }: { content: FileType }) {
                     path?.map((part, idx) => {
                         if (idx == 0) {
                             return <div className="flex group cursor-pointer pl-[24px]">
-                                <span className="group-hover:text-white">{part}</span>
-                                <svg className=" stroke-[#ffffff84] group-hover:stroke-white" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                                <span className="group-hover:text-[#ffffffdb]">{part}</span>
+                                <svg className=" stroke-[#ffffff84] group-hover:stroke-[#ffffffdb]" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                             </div>
                         };
 
                         return (
                             <div className="flex group cursor-pointer">
-                                <span className="group-hover:text-white">{part}</span>
-                                <svg className=" stroke-[#ffffff84] group-hover:stroke-white" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                                <span className="group-hover:text-[#ffffffdb]">{part}</span>
+                                <svg className=" stroke-[#ffffff84] group-hover:stroke-[#ffffffdb]" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                             </div>
                         );
                     })
                 }
-                <div className="flex items-center pl-1 *:mr-2 group cursor-pointer">
+                <div className={path ? "flex items-center pl-1 *:mr-2 group cursor-pointer" : "flex items-center pl-[24px] *:mr-2 group cursor-pointer"}>
                     {icon}
-                    <span className="group-hover:text-white">{filename}</span>
+                    <span className="group-hover:text-[#ffffffdb]">{filename}</span>
                 </div>
             </div>
         </nav>

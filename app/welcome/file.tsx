@@ -27,11 +27,11 @@ export default function File({ content, level, isHidden }: PropsType) {
 };
 
 const levelZeroStyles = {
-    active: "flex items-center pl-[12px] py-[2px] bg-[#37373d]",
-    inactive: "flex items-center pl-[12px] py-[2px]",
+    active: "flex items-center pl-[12px] py-[1.5px] bg-[#37373d]",
+    inactive: "flex items-center pl-[12px] py-[1.5px]",
 };
 
 const levelOneStyles = {
-    active: "flex items-center pl-[24px] py-[2px] bg-[#37373d]",
-    inactive: "flex items-center pl-[24px] py-[2px]",
+    active: "flex items-center pl-[24px] py-[1.5px] bg-[#37373d]",
+    inactive: "flex items-center pl-[24px] py-[1.5px]",
 };
