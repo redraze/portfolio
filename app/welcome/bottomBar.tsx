@@ -1,11 +1,11 @@
 import { useContentStore } from "~/lib/contentStore";
-import BottomBarDeatils from "./bottomBarDetails";
+import BottomBarDetails from "./bottomBarDetails";
 
 export default function BottomBar() {
     const content = useContentStore((state) => state.content);
 
     return (
-        <nav aria-label="bottom-bar" className="flex justify-between bg-[#2b74c9] h-[2.6vh] min-h-[26px] items-center ">
+        <nav aria-label="bottom-bar" className="flex justify-between bg-[#2b74c9] h-[2.6vh] min-h-[26px] items-center">
             {/* left-hand icons */}
             <div className="flex">
                 <div className="flex items-center mx-2">
@@ -33,24 +33,28 @@ export default function BottomBar() {
             </div>
 
             {/* right-hand icons */}
-            <div className="flex items-center *:text-[13.5px] *:mx-[8px]">
-                {content && <BottomBarDeatils
-                    filename={content.filename}
-                />}
-                <div className="flex">
-                    <div className="flex items-center mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={styles.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+            <div className="flex items-center *:text-[13.5px] h-full">
+                {content && <BottomBarDetails filename={content.filename} />}
+                <div className="relative flex items-center h-full *:p-2 *:ml-1">
+                    <div className={styles.group}>
+                        <div className="flex items-center mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={styles.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+                        </div>
+                        <span>Go Live</span>
+                        <span className={styles.tooltip}>Click to run live server</span>
                     </div>
-                    <span>Go Live</span>
-                </div>
-                <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={styles.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
+                    <div className={styles.group}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={styles.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
+                        <span className={styles.tooltip}>No Notifications</span>
+                    </div>
                 </div>
             </div>
         </nav>
-    )
-}
+    );
+};
 
 const styles = {
+    group: "group cursor-pointer flex grow justify-center hover:bg-[#3e87dc] px-[3.5px] h-full items-center",
+    tooltip: "hidden group-hover:flex absolute bottom-[25px] right-0 bg-[#252526] w-min whitespace-nowrap px-[9px] py-[3px] border-1 border-[#ffffff30] rounded-sm text-[14px] normalText",
     iconColor: "#ffffff",
 };
