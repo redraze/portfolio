@@ -7,13 +7,13 @@ export default function TopBar() {
         <nav aria-label="top-bar" className="flex bg-[#3c3c3c] justify-between h-[40px]">
             {/* left-hand dropdown menus */}
             <div className="w-0 flex items-center">
-                <div className="flex items-center z-1">
-                    <div className="flex items-center *:mx-[9px]">
+                <div className="flex items-center z-1 *:mx-[9px]">
+                    <div className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3da4f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     </div>
                     {
                         elements.map((e, idx) => (
-                            <div key={idx} className="text-[15px] text-[#ffffffbf] hover:bg-[#464646] px-[9px] py-[2px] rounded-md cursor-default">
+                            <div key={idx} className="text-[15px] text-[#ffffffbf] hover:bg-[#464646] py-[2px] rounded-md cursor-default">
                                 {e}
                             </div>
                         ))
@@ -37,7 +37,7 @@ export default function TopBar() {
                         </span>
                     </div>
                 </div>
-                <div className="flex group justify-center relative items-center h-full *:mx-1 px-[15%] mx-2 bg-[#464646] hover:bg-[#4d4d4d] border-[1.5px] border-solid border-[#ffffff25] hover:border-[#ffffff40] rounded-sm cursor-pointer">
+                <div className="flex group justify-center relative items-center h-full *:mx-1 px-[15%] mx-2 bg-[#464646] hover:bg-[#4d4d4d] border-[1.5px] border-solid border-[#ffffff25] hover:border-[#ffffff40] rounded-sm cursor-pointer z-10">
                     <div className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffffbb" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
