@@ -6,12 +6,14 @@ import FilingCabinet from "~/components/content/filingCabinet";
 export default function DefaultContent() {
     return (
         <div className="flex grow">
-            <Canvas>
-                <ambientLight />
-                <Suspense fallback={<Loader />}>
+            <Suspense fallback={<Loader />}>
+                <Canvas camera={{ position: [4, 4, -2] }}>
+                    <ambientLight intensity={Math.PI / 2} />
+                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+                    <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
                     <FilingCabinet />
-                </Suspense>
-            </Canvas>
+                </Canvas>
+            </Suspense>
         </div>
     );
 };
