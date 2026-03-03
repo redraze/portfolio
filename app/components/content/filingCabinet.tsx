@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
 import { useGLTF, useAnimations, useCursor } from '@react-three/drei';
 import { EffectComposer, Outline } from '@react-three/postprocessing'
 import { type ThreeEvent } from '@react-three/fiber';
@@ -66,42 +66,69 @@ export default function FilingCabinet() {
   const toggleFolder = useFolderStore((state) => state.toggleFolder);
   const closeAllFolders = useFolderStore((state) => state.closeAllFolders);
 
-  const closeAll = (e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation();
-    names.forEach((name) => {
-      const action = actions[name];
-      action?.fadeOut(animationDuration / 2);
-    });
-    closeAllFolders();
-  };
+  const [topDrawerOpen, setTopDrawerOpen] = useState(false);
+  const [botDrawerOpen, setBotDrawerOpen] = useState(false);
 
-  const animationDuration = 0.4;
-  const haltDelay = animationDuration * 0.8 * 1000; // workaround from being unable to set clampWhenFinished
+  const stateMap: { [x: string]: [boolean, Dispatch<SetStateAction<boolean>>] } = {
+    "projects": [topDrawerOpen, setTopDrawerOpen],
+    "experience": [botDrawerOpen, setBotDrawerOpen],
+  };
 
   const actionsMap: { [x: string]: AnimationAction | null } = {
     "projects": actions[names[0]],
     "experience": actions[names[1]],
   };
 
+  const closeAll = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    Object
+      .values(actionsMap)
+      .forEach((action: AnimationAction | null) => {
+        closeDrawer(action);
+      });
+    setTopDrawerOpen(false);
+    setBotDrawerOpen(false);
+    closeAllFolders();
+  };
+
+  const animationDuration = 0.4;
+  const haltDelay = animationDuration * 0.8 * 1000; // workaround from being unable to set clampWhenFinished
+
   const clickDrawer = (e: ThreeEvent<MouseEvent>, foldername: string) => {
     e.stopPropagation();
 
     const action = actionsMap[foldername];
     const open = folderState[foldername];
+    const [_, setState] = stateMap[foldername];
 
-    if (open) {
-      action?.fadeOut(animationDuration / 2);
-    } else {
-      action?.setDuration(animationDuration);
-      action?.setLoop(2200, animationDuration);
-      action?.reset().play().fadeIn(animationDuration);
-      // action?.clampWhenFinished = true;
-      setTimeout(() => action?.halt(0), haltDelay);
-    }
+    setState(!open);
+    open ? closeDrawer(action) : openDrawer(action);
     toggleFolder(foldername);
   };
 
-  // TODO: sync drawer state to folder state
+  const openDrawer = (action: AnimationAction | null) => {
+    action?.setDuration(animationDuration);
+    action?.setLoop(2200, animationDuration);
+    action?.reset().play().fadeIn(animationDuration);
+    // action?.clampWhenFinished = true;
+    setTimeout(() => action?.halt(0), haltDelay);
+  }
+
+  const closeDrawer = (action: AnimationAction | null) => {
+      action?.fadeOut(animationDuration / 2);
+  };
+
+  useEffect(() => {
+    Object.entries(folderState).forEach(([foldername, isOpen]) => {
+      const action = actionsMap[foldername];
+      const [state, setState] = stateMap[foldername];
+
+      if (isOpen === state) return;
+
+      isOpen ? openDrawer(action) : closeDrawer(action);
+      setState(isOpen);
+    });
+  }, [folderState]);
 
 
   return (<>
