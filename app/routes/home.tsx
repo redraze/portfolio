@@ -24,7 +24,7 @@ export default function Home() {
           <LeftBar />
           <FileExplorer />
           { content && <MainPaneTopBar content={content} /> }
-          { content ? content.component : <DefaultContent /> }
+          <DefaultContent />
       </div>
       <BottomBar />
     </main>
