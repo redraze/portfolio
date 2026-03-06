@@ -55,7 +55,7 @@ export default function FilingCabinet() {
   };
 
   const [hovered, setHover] = useState(false);
-  useCursor(hovered, 'pointer', 'auto');
+  useCursor(hovered, 'pointer', 'grab');
 
 
   // ==================================================================================================
