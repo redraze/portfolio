@@ -4,6 +4,7 @@ import { EffectComposer, Outline } from '@react-three/postprocessing'
 import { type ThreeEvent } from '@react-three/fiber';
 import { AnimationAction, type Object3D, type Object3DEventMap } from 'three';
 import { useFolderStore } from '~/lib/folderStore';
+import { useEventStore } from '~/lib/eventStore';
 
 export default function FilingCabinet() {
   const gltf: any = useGLTF('/filingCabinet.gltf');
@@ -16,6 +17,9 @@ export default function FilingCabinet() {
   //                                        HOVER EVENTS
   // ==================================================================================================
 
+  const hoverTarget = useEventStore((state) => state.hoverTarget);
+  const setHoverTarget = useEventStore((state) => state.setHoverTarget);
+    
   const body = useRef<Object3D<Object3DEventMap> | null>(null);
   const topDrawer = useRef<Object3D<Object3DEventMap> | null>(null);
   const topDrawerBody = useRef<Object3D<Object3DEventMap> | null>(null);
@@ -26,6 +30,7 @@ export default function FilingCabinet() {
 
   const [ref, setRef] = useState<any>(null);
   const [refMatrix, setRefMatrix] = useState<any>({});
+  const [targetMap, setTargetMap] = useState<any>({});
 
   useEffect(() => {
     setRefMatrix({
@@ -39,20 +44,42 @@ export default function FilingCabinet() {
         bottomDrawerHandle,
       ],
     });
+
+    setTargetMap({
+      [body!.current!.uuid]: "body",
+      [topDrawer!.current!.uuid]: "projects",
+      [bottomDrawer!.current!.uuid]: "experience",
+      "body": body!.current!.uuid,
+      "projects": topDrawer!.current!.uuid,
+      "experience": bottomDrawer!.current!.uuid,
+    });
   }, []);
 
   const onPointerEnter = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     setHover(true);
-    const object = e.eventObject;
-    setRef(refMatrix[object.uuid]);
+    const objectId = e.eventObject.uuid;
+
+    setRef(refMatrix[objectId]);
+    setHoverTarget(targetMap[objectId]);
   };
 
   const onPointerLeave = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     setHover(false);
     setRef(null);
+    setHoverTarget(null);
   };
+
+  useEffect(() => {
+    if (!hoverTarget) {
+      setRef(null);
+      return;
+    };
+    const targetUuid = targetMap[hoverTarget];
+    const targetRef = refMatrix[targetUuid];
+    setRef(targetRef);
+  }, [hoverTarget]);
 
   const [hovered, setHover] = useState(false);
   useCursor(hovered, 'pointer', 'grab');
