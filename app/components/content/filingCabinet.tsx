@@ -92,8 +92,6 @@ export default function FilingCabinet() {
   };
 
   const animationDuration = 0.4;
-  const haltDelay = animationDuration * 0.8 * 1000; // workaround from being unable to set clampWhenFinished
-
   const clickDrawer = (e: ThreeEvent<MouseEvent>, foldername: string) => {
     e.stopPropagation();
 
@@ -110,8 +108,7 @@ export default function FilingCabinet() {
     action?.setDuration(animationDuration);
     action?.setLoop(2200, animationDuration);
     action?.reset().play().fadeIn(animationDuration);
-    // action?.clampWhenFinished = true;
-    setTimeout(() => action?.halt(0), haltDelay);
+    if (action) action.clampWhenFinished = true;
   }
 
   const closeDrawer = (action: AnimationAction | null) => {
