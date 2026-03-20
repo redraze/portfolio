@@ -18,9 +18,6 @@ export default function DefaultContent() {
                 <Suspense fallback={<Loader />}>
                     <Canvas camera={{ position: [4, 4, -2] }} resize={{ debounce: 0 }}>
                         <OrbitControls />
-                        <ambientLight intensity={Math.PI / 2} />
-                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-                        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
                         <FilingCabinet />
                     </Canvas>
                 </Suspense>
