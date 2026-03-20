@@ -10,7 +10,7 @@ export default function FilingCabinet() {
   const gltf: any = useGLTF('/filingCabinet.gltf');
   const group = useRef(null);
   const { nodes, materials, animations } = gltf;
-  const { actions, names } = useAnimations(animations, group);
+  const { actions } = useAnimations(animations, group);
 
 
   // ==================================================================================================
@@ -102,8 +102,8 @@ export default function FilingCabinet() {
   };
 
   const actionsMap: { [x: string]: AnimationAction | null } = {
-    "projects": actions[names[1]],
-    "experience": actions[names[2]],
+    "projects": actions["drawer topAction"],
+    "experience": actions["drawer botAction"],
   };
 
   const closeAll = (e: ThreeEvent<MouseEvent>) => {
@@ -238,16 +238,6 @@ export default function FilingCabinet() {
         />
       </group>
 
-      {/* carpet */}
-      <mesh
-        name="floor"
-        castShadow
-        receiveShadow
-        geometry={nodes.floor.geometry}
-        material={materials.carpet}
-        scale={[10, 2, 10]}
-      />
-
       {/* table lamp */}
       <mesh
         name="lamp"
@@ -264,14 +254,22 @@ export default function FilingCabinet() {
       <spotLight
         name="Spot"
         intensity={10}
-        angle={0.873}
-        penumbra={0.15}
+        angle={0.973}
+        penumbra={0.1}
         decay={2}
         color="#ffeeac"
         position={[-0.753, 2.76, 0.501]}
         rotation={[-1.336, -0.499, 0.064]}>
         <group position={[0, 0, -1]} />
       </spotLight>
+
+      <mesh position={[-0.753, 2.76, 0.501]} rotation={[-1.336, -0.499, 0.064]}>
+        <sphereGeometry args={[0.125, 8, 8]} />
+        <meshBasicMaterial 
+          color="#ffeeac"
+          toneMapped={false}
+        />
+      </mesh>
 
     </group>
   </>);

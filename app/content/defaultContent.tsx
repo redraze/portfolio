@@ -16,8 +16,11 @@ export default function DefaultContent() {
             
             <div className={content && content.component ? styles.mini : styles.full} onMouseDown={() => clearContent()}>
                 <Suspense fallback={<Loader />}>
-                    <Canvas camera={{ position: [4, 4, -2] }} resize={{ debounce: 0 }}>
-                        <OrbitControls />
+                    <Canvas camera={{ position: [6, 6, -4] }} resize={{ debounce: 0 }}>
+                        <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />
+                        <ambientLight intensity={1.5} />
+                        <pointLight position={[-15, -8, -12]} decay={0} intensity={Math.PI} />
+                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
                         <FilingCabinet />
                     </Canvas>
                 </Suspense>
