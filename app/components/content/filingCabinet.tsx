@@ -102,8 +102,8 @@ export default function FilingCabinet() {
   };
 
   const actionsMap: { [x: string]: AnimationAction | null } = {
-    "projects": actions[names[0]],
-    "experience": actions[names[1]],
+    "projects": actions[names[1]],
+    "experience": actions[names[2]],
   };
 
   const closeAll = (e: ThreeEvent<MouseEvent>) => {
@@ -237,6 +237,42 @@ export default function FilingCabinet() {
           ref={bottomDrawerHandle}
         />
       </group>
+
+      {/* carpet */}
+      <mesh
+        name="floor"
+        castShadow
+        receiveShadow
+        geometry={nodes.floor.geometry}
+        material={materials.carpet}
+        scale={[10, 2, 10]}
+      />
+
+      {/* table lamp */}
+      <mesh
+        name="lamp"
+        castShadow
+        receiveShadow
+        geometry={nodes.lamp.geometry}
+        material={materials.lamp}
+        position={[-0.902, 2.07, 0.622]}
+        rotation={[0, -0.889, 0]}
+        scale={[0.51, 2, 0.4]}
+      />
+
+      {/* lamp light */}
+      <spotLight
+        name="Spot"
+        intensity={10}
+        angle={0.873}
+        penumbra={0.15}
+        decay={2}
+        color="#ffeeac"
+        position={[-0.753, 2.76, 0.501]}
+        rotation={[-1.336, -0.499, 0.064]}>
+        <group position={[0, 0, -1]} />
+      </spotLight>
+
     </group>
   </>);
 };
