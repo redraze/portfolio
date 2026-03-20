@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import MainPaneTopBar from "~/components/home/mainPaneTopBar";
 import Loader from "~/components/content/loader";
@@ -10,11 +10,19 @@ export default function DefaultContent() {
     const content = useContentStore((state) => state.content);
     const clearContent = useContentStore((state) => state.clearContent);
 
+    const [hovered, setHover] = useState(false);
+
     return (
         <div className="flex grow relative">
             { content && <MainPaneTopBar content={content} /> }
             
-            <div className={content && content.component ? styles.mini : styles.full} onMouseDown={() => clearContent()}>
+            <div
+                className={`
+                    ${ content && content.component ? styles.mini : styles.full }
+                    ${ hovered ? 'hover:cursor-pointer' : 'hover:cursor-grab' }
+                `}
+                onMouseDown={() => clearContent()}
+            >
                 <Canvas camera={{ position: [6, 6, -4] }} resize={{ debounce: 0 }}>
                     <Suspense
                         fallback={<Loader />}
@@ -23,7 +31,7 @@ export default function DefaultContent() {
                             <ambientLight intensity={1.5} />,
                             <pointLight position={[-15, -8, -12]} decay={0} intensity={Math.PI} />,
                             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />,
-                            <FilingCabinet />,
+                            <FilingCabinet setHover={setHover} />,
                         ]}
                     >
                     </Suspense>

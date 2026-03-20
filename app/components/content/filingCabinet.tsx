@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
-import { useGLTF, useAnimations, useCursor } from '@react-three/drei';
+import { useGLTF, useAnimations } from '@react-three/drei';
 import { EffectComposer, Outline } from '@react-three/postprocessing'
 import { type ThreeEvent } from '@react-three/fiber';
 import { AnimationAction, type Object3D, type Object3DEventMap } from 'three';
 import { useFolderStore } from '~/lib/folderStore';
 import { useEventStore } from '~/lib/eventStore';
 
-export default function FilingCabinet() {
+export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStateAction<boolean>> }) {
   const gltf: any = useGLTF('/filingCabinet.gltf');
   const group = useRef(null);
   const { nodes, materials, animations } = gltf;
@@ -81,9 +81,6 @@ export default function FilingCabinet() {
     setRef(targetRef);
   }, [hoverTarget]);
 
-  const [hovered, setHover] = useState(false);
-  useCursor(hovered, 'pointer', 'grab');
-
 
   // ==================================================================================================
   //                                        CLICK EVENTS
@@ -154,6 +151,10 @@ export default function FilingCabinet() {
     });
   }, [folderState]);
 
+
+  // ==================================================================================================
+  //                                        SCENE OBJECTS
+  // ==================================================================================================
 
   return (<>
     <EffectComposer autoClear={false}>
