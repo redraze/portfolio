@@ -79,3 +79,11 @@ export const files: FileType[] = [
         component: <></>,
     },
 ];
+
+export const filesMap = files.reduce(
+    (prev, file) => {
+        const { filename } = file;
+        return { ...prev, [filename]: file }
+    },
+    {} as { [x: string]: FileType }
+);
