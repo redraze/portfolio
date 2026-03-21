@@ -18,6 +18,9 @@ const initalFolderState = folders.reduce(
   {}
 );
 
+/**
+ * Store for tracking the state of the file system folders.
+ */
 export const useFolderStore = create<FolderStoreType>((set) => ({
   folderState: initalFolderState,
 

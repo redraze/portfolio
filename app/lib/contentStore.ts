@@ -7,6 +7,9 @@ interface ContentState {
   clearContent: () => void,
 };
 
+/**
+ * Store for tracking which file is currently opened.
+ */
 export const useContentStore = create<ContentState>((set) => ({
   content: null,
   setContent: (newContent) => set({ content: newContent }),

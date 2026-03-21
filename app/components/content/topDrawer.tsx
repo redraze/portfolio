@@ -57,5 +57,5 @@ export default function TopDrawer({ refs, nodes, materials, events }: any) {
                 onPointerLeave={(e) => onPointerLeave(e)}
             />
         </group>
-    )
-}
+    );
+};

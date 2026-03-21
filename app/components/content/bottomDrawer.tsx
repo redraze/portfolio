@@ -57,5 +57,5 @@ export default function BottomDrawer({ refs, nodes, materials, events }: any) {
                 onPointerLeave={(e) => onPointerLeave(e)}
             />
         </group>
-    )
-}
+    );
+};

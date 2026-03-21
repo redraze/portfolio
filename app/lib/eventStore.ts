@@ -6,7 +6,7 @@ interface EventState {
 };
 
 /**
- * A store for tracking mouse events.
+ * Store for tracking mouse events.
  */
 export const useEventStore = create<EventState>((set) => ({
   hoverTarget: null,

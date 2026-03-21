@@ -14,5 +14,5 @@ export default function Body({ refs, nodes, materials, events }: any) {
             onPointerEnter={(e) => onPointerEnter(e)}
             onPointerLeave={(e) => onPointerLeave(e)}
         />
-    )
-}
+    );
+};
