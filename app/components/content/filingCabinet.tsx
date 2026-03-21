@@ -56,9 +56,11 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [body!.current!.uuid]: "body",
       [topDrawer!.current!.uuid]: "projects",
       [bottomDrawer!.current!.uuid]: "experience",
+      [lamp!.current!.uuid]: "lamp",
       "body": body!.current!.uuid,
       "projects": topDrawer!.current!.uuid,
       "experience": bottomDrawer!.current!.uuid,
+      "lamp": lamp!.current!.uuid,
     });
   }, []);
 
