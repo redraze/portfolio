@@ -80,10 +80,29 @@ export const files: FileType[] = [
     },
 ];
 
-export const filesMap = files.reduce(
-    (prev, file) => {
-        const { filename } = file;
-        return { ...prev, [filename]: file }
-    },
-    {} as { [x: string]: FileType }
-);
+type FilesMapType = { [x: string]: FileType };
+
+const folderReducer = (folders: FolderType[]) => {
+    return folders.reduce(
+        (prev, folder) => {
+            const { files } = folder;
+            const reduction = filesReducer(files);
+            return { ...prev, ...reduction };
+        },
+        {} as FilesMapType
+    )
+};
+
+const filesReducer = (files: FileType[]) => {
+    return files.reduce(
+        (prev, file) => {
+            const { filename } = file;
+            return { ...prev, [filename]: file };
+        },
+        {} as FilesMapType
+    )
+};
+
+const filesReduction = filesReducer(files);
+const foldersReduction = folderReducer(folders);
+export const fileSystemMap = { ...filesReduction, ...foldersReduction };
