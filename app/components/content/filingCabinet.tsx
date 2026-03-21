@@ -27,8 +27,11 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
   const bottomDrawer = useRef<Object3D<Object3DEventMap> | null>(null);
   const bottomDrawerBody = useRef<Object3D<Object3DEventMap> | null>(null);
   const bottomDrawerHandle = useRef<Object3D<Object3DEventMap> | null>(null);
+  const lamp = useRef<Object3D<Object3DEventMap> | null>(null);
+  const lampBody = useRef<Object3D<Object3DEventMap> | null>(null);
+  const bulb = useRef<Object3D<Object3DEventMap> | null>(null);
 
-  const [ref, setRef] = useState<any>(null);
+  const [outlineRef, setOutlineRef] = useState<any>(null);
   const [refMatrix, setRefMatrix] = useState<any>({});
   const [targetMap, setTargetMap] = useState<any>({});
 
@@ -42,6 +45,10 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [bottomDrawer!.current!.uuid]: [
         bottomDrawerBody,
         bottomDrawerHandle,
+      ],
+      [lamp!.current!.uuid]: [
+        lampBody,
+        bulb,
       ],
     });
 
@@ -60,25 +67,26 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
     setHover(true);
     const objectId = e.eventObject.uuid;
 
-    setRef(refMatrix[objectId]);
+    setOutlineRef(refMatrix[objectId]);
     setHoverTarget(targetMap[objectId]);
   };
 
   const onPointerLeave = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     setHover(false);
-    setRef(null);
+    setOutlineRef(null);
     setHoverTarget(null);
   };
 
+  // sync hover state from file system to outline state in scene
   useEffect(() => {
     if (!hoverTarget) {
-      setRef(null);
+      setOutlineRef(null);
       return;
     };
     const targetUuid = targetMap[hoverTarget];
     const targetRef = refMatrix[targetUuid];
-    setRef(targetRef);
+    setOutlineRef(targetRef);
   }, [hoverTarget]);
 
 
@@ -92,6 +100,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
 
   const [topDrawerOpen, setTopDrawerOpen] = useState(false);
   const [botDrawerOpen, setBotDrawerOpen] = useState(false);
+  const [lampOn, setLampOn] = useState(true);
 
   const stateMap: { [x: string]: [boolean, Dispatch<SetStateAction<boolean>>] } = {
     "projects": [topDrawerOpen, setTopDrawerOpen],
@@ -139,6 +148,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       action?.fadeOut(animationDuration / 2);
   };
 
+  // sync folder state from file system to drawer state in scene
   useEffect(() => {
     Object.entries(folderState).forEach(([foldername, isOpen]) => {
       const action = actionsMap[foldername];
@@ -151,6 +161,11 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
     });
   }, [folderState]);
 
+  const toggleLamp = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    setLampOn((prev) => !prev);
+  };
+
 
   // ==================================================================================================
   //                                        SCENE OBJECTS
@@ -159,7 +174,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
   return (<>
     <EffectComposer autoClear={false}>
       <Outline
-          selection={ref}
+          selection={outlineRef}
           visibleEdgeColor={0xffffff}
           hiddenEdgeColor={0x000000}
           edgeStrength={5}
@@ -240,37 +255,47 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       </group>
 
       {/* table lamp */}
-      <mesh
+      <group
+        ref={lamp}
         name="lamp"
-        castShadow
-        receiveShadow
-        geometry={nodes.lamp.geometry}
-        material={materials.lamp}
         position={[-0.902, 2.07, 0.622]}
         rotation={[0, -0.889, 0]}
         scale={[0.51, 2, 0.4]}
-      />
+        onClick={(e) => toggleLamp(e)}
+        onPointerEnter={(e) => onPointerEnter(e)}
+        onPointerLeave={(e) => onPointerLeave(e)}
+      >
+        <mesh
+          ref={lampBody}
+          name="Cube002"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube002.geometry}
+          material={materials.lamp}
+        />
+        <mesh
+          ref={bulb}
+          name="Cube002_1"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube002_1.geometry}
+          material={lampOn ? materials.bulb : materials.shell}
+        />
+      </group>
 
       {/* lamp light */}
       <spotLight
         name="Spot"
-        intensity={10}
+        intensity={lampOn ? 10 : 0}
         angle={0.973}
         penumbra={0.1}
         decay={2}
         color="#ffeeac"
         position={[-0.753, 2.76, 0.501]}
-        rotation={[-1.336, -0.499, 0.064]}>
+        rotation={[-1.336, -0.499, 0.064]}
+      >
         <group position={[0, 0, -1]} />
       </spotLight>
-
-      <mesh position={[-0.753, 2.76, 0.501]} rotation={[-1.336, -0.499, 0.064]}>
-        <sphereGeometry args={[0.125, 8, 8]} />
-        <meshBasicMaterial 
-          color="#ffeeac"
-          toneMapped={false}
-        />
-      </mesh>
 
     </group>
   </>);
