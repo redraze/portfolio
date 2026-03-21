@@ -5,7 +5,7 @@ import { type ThreeEvent } from '@react-three/fiber';
 import { AnimationAction, type Object3D, type Object3DEventMap } from 'three';
 import { useFolderStore } from '~/lib/folderStore';
 import { useEventStore } from '~/lib/eventStore';
-import { filesMap } from '~/lib/fileStructure';
+import { fileSystemMap } from '~/lib/fileStructure';
 import { useContentStore } from '~/lib/contentStore';
 
 export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStateAction<boolean>> }) {
@@ -34,6 +34,10 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
   const bulb = useRef<Object3D<Object3DEventMap> | null>(null);
   const folder01 = useRef<Object3D<Object3DEventMap> | null>(null);
   const folder02 = useRef<Object3D<Object3DEventMap> | null>(null);
+  const folder03 = useRef<Object3D<Object3DEventMap> | null>(null);
+  const folder04 = useRef<Object3D<Object3DEventMap> | null>(null);
+  const folder05 = useRef<Object3D<Object3DEventMap> | null>(null);
+  const folder06 = useRef<Object3D<Object3DEventMap> | null>(null);
 
   const [outlineRef, setOutlineRef] = useState<any>(null);
   const [refMatrix, setRefMatrix] = useState<any>({});
@@ -56,6 +60,10 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       ],
       [folder01!.current!.uuid]: [folder01],
       [folder02!.current!.uuid]: [folder02],
+      [folder03!.current!.uuid]: [folder03],
+      [folder04!.current!.uuid]: [folder04],
+      [folder05!.current!.uuid]: [folder05],
+      [folder06!.current!.uuid]: [folder06],
     });
 
     setTargetMap({
@@ -65,12 +73,20 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [lamp!.current!.uuid]: "lamp",
       [folder01!.current!.uuid]: "technologies.json",
       [folder02!.current!.uuid]: "ABOUTME.md",
+      [folder03!.current!.uuid]: "project_1.tsx",
+      [folder04!.current!.uuid]: "project_2.tsx",
+      [folder05!.current!.uuid]: "experience_1.tsx",
+      [folder06!.current!.uuid]: "experience_2.tsx",
       "body": body!.current!.uuid,
       "projects": topDrawer!.current!.uuid,
       "experience": bottomDrawer!.current!.uuid,
       "lamp": lamp!.current!.uuid,
       "technologies.json": folder01!.current!.uuid,
       "ABOUTME.md": folder02!.current!.uuid,
+      "project_1.tsx": folder03!.current!.uuid,
+      "project_2.tsx": folder04!.current!.uuid,
+      "experience_1.tsx": folder05!.current!.uuid,
+      "experience_2.tsx": folder06!.current!.uuid,
     });
   }, []);
 
@@ -166,7 +182,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
 
     const targetUuid = e.object.uuid;
     const filename = targetMap[targetUuid];
-    const content = filesMap[filename];
+    const content = fileSystemMap[filename];
 
     setContent(content);
   }
@@ -247,6 +263,34 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
           material={materials.metal}
           ref={topDrawerHandle}
         />
+        <mesh
+          ref={folder03}
+          name="folder03"
+          castShadow
+          receiveShadow
+          geometry={nodes.folder03.geometry}
+          material={materials.folder}
+          position={[-1.86, -0.379, -0.365]}
+          rotation={[1.836, -0.039, -1.541]}
+          scale={[1.316, 1.53, 1.156]}
+          onClick={(e) => clickFile(e)}
+          onPointerEnter={(e) => onPointerEnter(e)}
+          onPointerLeave={(e) => onPointerLeave(e)}
+        />
+        <mesh
+          ref={folder04}
+          name="folder04"
+          castShadow
+          receiveShadow
+          geometry={nodes.folder04.geometry}
+          material={materials.folder}
+          position={[-2.304, -0.379, -0.365]}
+          rotation={[1.836, -0.039, -1.541]}
+          scale={[1.316, 1.53, 1.156]}
+          onClick={(e) => clickFile(e)}
+          onPointerEnter={(e) => onPointerEnter(e)}
+          onPointerLeave={(e) => onPointerLeave(e)}
+        />
       </group>
       
       {/* bottom drawer */}
@@ -274,6 +318,34 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
           geometry={nodes.drawer_top010_1.geometry}
           material={materials.metal}
           ref={bottomDrawerHandle}
+        />
+        <mesh
+          ref={folder05}
+          name="folder05"
+          castShadow
+          receiveShadow
+          geometry={nodes.folder05.geometry}
+          material={materials.folder}
+          position={[-1.86, -0.354, -0.365]}
+          rotation={[1.836, -0.039, -1.541]}
+          scale={[1.316, 1.53, 1.156]}
+          onClick={(e) => clickFile(e)}
+          onPointerEnter={(e) => onPointerEnter(e)}
+          onPointerLeave={(e) => onPointerLeave(e)}
+        />
+        <mesh
+          ref={folder06}
+          name="folder06"
+          castShadow
+          receiveShadow
+          geometry={nodes.folder06.geometry}
+          material={materials.folder}
+          position={[-2.304, -0.354, -0.365]}
+          rotation={[1.836, -0.039, -1.541]}
+          scale={[1.316, 1.53, 1.156]}
+          onClick={(e) => clickFile(e)}
+          onPointerEnter={(e) => onPointerEnter(e)}
+          onPointerLeave={(e) => onPointerLeave(e)}
         />
       </group>
 
@@ -320,6 +392,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
         <group position={[0, 0, -1]} />
       </spotLight>
 
+      {/* top folders */}
       <mesh
         ref={folder01}
         name="folder01"
@@ -334,7 +407,6 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
         onPointerEnter={(e) => onPointerEnter(e)}
         onPointerLeave={(e) => onPointerLeave(e)}
       />
-
       <mesh
         ref={folder02}
         name="folder02"
