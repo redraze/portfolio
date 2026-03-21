@@ -1,12 +1,25 @@
-import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
+import { useEffect, useRef, useState, type Dispatch, type RefObject, type SetStateAction } from 'react';
 import { type Object3D, type Object3DEventMap } from 'three';
+import { type GLTF } from 'three-stdlib';
 import { type ThreeEvent } from '@react-three/fiber';
-import { useGLTF, useAnimations } from '@react-three/drei';
+import { type ObjectMap } from '@react-three/fiber';
 import { EffectComposer, Outline } from '@react-three/postprocessing'
+import { useGLTF, useAnimations } from '@react-three/drei';
 import { useClickEvents, useHoverEvents } from '~/lib/customHooks';
+import Body from './body';
+import TopDrawer from './topDrawer';
+import BottomDrawer from './bottomDrawer';
+import TableLamp from './tableLamp';
+import TopFolders from './topFolders';
+
+// props type to be used in imported objects
+export interface BaseObjectProps extends GLTF, ObjectMap {
+  refs: { [x: string]: RefObject<Object3D<Object3DEventMap> | null> },
+  events: { [x: string]: (e: ThreeEvent<MouseEvent>, foldername?: string) => void },
+};
 
 export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStateAction<boolean>> }) {
-  const gltf: any = useGLTF('/filingCabinet.gltf');
+  const gltf = useGLTF('/filingCabinet.gltf');
   const group = useRef(null);
   const { nodes, materials, animations } = gltf;
   const { actions } = useAnimations(animations, group);
@@ -98,208 +111,38 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       />
     </EffectComposer>
 
-    {/* filing cabinet group */}
     <group dispose={null} ref={group} name={"Scene"}>
-
-      {/* body */}
-      <mesh
-        name="body"
-        castShadow
-        receiveShadow
-        geometry={nodes.body.geometry}
-        material={materials.shell}
-        scale={[1.3, 2, 1]}
-        ref={body}
-        onClick={(e) => closeAll(e)}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
+      <Body
+        refs={{ body }}
+        nodes={nodes}
+        materials={materials}
+        events={{ closeAll, onPointerEnter, onPointerLeave }}
       />
-
-      {/* top drawer */}
-      <group
-        name="drawer_top"
-        position={[1.342, 1.23, -0.003]}
-        scale={[1.307, 0.857, 1]}
-        ref={topDrawer}
-        onClick={(e) => clickDrawer(e, "projects")}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
-      >
-        <mesh
-          name="drawer_top008"
-          castShadow
-          receiveShadow
-          geometry={nodes.drawer_top008.geometry}
-          material={materials.shell}
-          ref={topDrawerBody}
-        />
-        <mesh
-          name="drawer_top008_1"
-          castShadow
-          receiveShadow
-          geometry={nodes.drawer_top008_1.geometry}
-          material={materials.metal}
-          ref={topDrawerHandle}
-        />
-        <mesh
-          ref={folder03}
-          name="folder03"
-          castShadow
-          receiveShadow
-          geometry={nodes.folder03.geometry}
-          material={materials.folder}
-          position={[-1.86, -0.379, -0.365]}
-          rotation={[1.836, -0.039, -1.541]}
-          scale={[1.316, 1.53, 1.156]}
-          onClick={(e) => clickFile(e)}
-          onPointerEnter={(e) => onPointerEnter(e)}
-          onPointerLeave={(e) => onPointerLeave(e)}
-        />
-        <mesh
-          ref={folder04}
-          name="folder04"
-          castShadow
-          receiveShadow
-          geometry={nodes.folder04.geometry}
-          material={materials.folder}
-          position={[-2.304, -0.379, -0.365]}
-          rotation={[1.836, -0.039, -1.541]}
-          scale={[1.316, 1.53, 1.156]}
-          onClick={(e) => clickFile(e)}
-          onPointerEnter={(e) => onPointerEnter(e)}
-          onPointerLeave={(e) => onPointerLeave(e)}
-        />
-      </group>
-      
-      {/* bottom drawer */}
-      <group
-        name="drawer_bot"
-        ref={bottomDrawer}
-        position={[1.342, -0.729, -0.003]}
-        scale={[1.307, 0.857, 1]}
-        onClick={(e) => clickDrawer(e, "experience")}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
-      >
-        <mesh
-          name="drawer_top010"
-          castShadow
-          receiveShadow
-          geometry={nodes.drawer_top010.geometry}
-          material={materials.shell}
-          ref={bottomDrawerBody}
-        />
-        <mesh
-          name="drawer_top010_1"
-          castShadow
-          receiveShadow
-          geometry={nodes.drawer_top010_1.geometry}
-          material={materials.metal}
-          ref={bottomDrawerHandle}
-        />
-        <mesh
-          ref={folder05}
-          name="folder05"
-          castShadow
-          receiveShadow
-          geometry={nodes.folder05.geometry}
-          material={materials.folder}
-          position={[-1.86, -0.354, -0.365]}
-          rotation={[1.836, -0.039, -1.541]}
-          scale={[1.316, 1.53, 1.156]}
-          onClick={(e) => clickFile(e)}
-          onPointerEnter={(e) => onPointerEnter(e)}
-          onPointerLeave={(e) => onPointerLeave(e)}
-        />
-        <mesh
-          ref={folder06}
-          name="folder06"
-          castShadow
-          receiveShadow
-          geometry={nodes.folder06.geometry}
-          material={materials.folder}
-          position={[-2.304, -0.354, -0.365]}
-          rotation={[1.836, -0.039, -1.541]}
-          scale={[1.316, 1.53, 1.156]}
-          onClick={(e) => clickFile(e)}
-          onPointerEnter={(e) => onPointerEnter(e)}
-          onPointerLeave={(e) => onPointerLeave(e)}
-        />
-      </group>
-
-      {/* table lamp */}
-      <group
-        ref={lamp}
-        name="lamp"
-        position={[-0.902, 2.07, 0.622]}
-        rotation={[0, -0.889, 0]}
-        scale={[0.51, 2, 0.4]}
-        onClick={(e) => toggleLamp(e)}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
-      >
-        <mesh
-          ref={lampBody}
-          name="Cube002"
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube002.geometry}
-          material={materials.lamp}
-        />
-        <mesh
-          ref={bulb}
-          name="Cube002_1"
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube002_1.geometry}
-          material={lampOn ? materials.bulb : materials.shell}
-        />
-      </group>
-
-      {/* lamp light */}
-      <spotLight
-        name="Spot"
-        intensity={lampOn ? 5 : 0}
-        angle={0.973}
-        penumbra={0.1}
-        decay={2}
-        color="#ffeeac"
-        position={[-0.753, 2.76, 0.501]}
-        rotation={[-1.336, -0.499, 0.064]}
-      >
-        <group position={[0, 0, -1]} />
-      </spotLight>
-
-      {/* top folders */}
-      <mesh
-        ref={folder01}
-        name="folder01"
-        castShadow
-        receiveShadow
-        geometry={nodes.folder01.geometry}
-        material={materials.folder}
-        position={[0.146, -0.015, -0.213]}
-        rotation={[0, 0.367, 0]}
-        scale={[1.3, 2, 1]}
-        onClick={(e) => clickFile(e)}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
+      <TableLamp
+        refs={{ lamp, lampBody, bulb }}
+        nodes={nodes}
+        materials={materials}
+        events={{ toggleLamp, onPointerEnter, onPointerLeave }}
+        lampOn={lampOn}
       />
-      <mesh
-        ref={folder02}
-        name="folder02"
-        castShadow
-        receiveShadow
-        geometry={nodes.folder02.geometry}
-        material={materials.folder}
-        position={[0.691, 0.013, 0.062]}
-        rotation={[0, 0.608, 0]}
-        scale={[1.3, 2, 1]}
-        onClick={(e) => clickFile(e)}
-        onPointerEnter={(e) => onPointerEnter(e)}
-        onPointerLeave={(e) => onPointerLeave(e)}
+      <TopFolders
+        refs={{ folder01, folder02 }}
+        nodes={nodes}
+        materials={materials}
+        events={{ clickFile, onPointerEnter, onPointerLeave }}
       />
-
+      <TopDrawer
+        refs={{ topDrawer, topDrawerBody, topDrawerHandle, folder03, folder04 }}
+        nodes={nodes}
+        materials={materials}
+        events={{ clickDrawer, onPointerEnter, onPointerLeave, clickFile }}
+      />
+      <BottomDrawer
+        refs={{ bottomDrawer, bottomDrawerBody, bottomDrawerHandle, folder05, folder06 }}
+        nodes={nodes}
+        materials={materials}
+        events={{ clickDrawer, onPointerEnter, onPointerLeave, clickFile }}
+      />
     </group>
   </>);
 };
