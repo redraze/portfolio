@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useContentStore } from "~/lib/contentStore";
 import type { Route } from "./+types/home";
 import TopBar from "~/components/home/topbar";
 import LeftBar from "~/components/home/leftbar";
@@ -13,6 +15,21 @@ export function meta({}: Route.MetaArgs) {
 };
 
 export default function Home() {
+  const clearContent = useContentStore((state) => state.clearContent);
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const key = e.key;
+    if (key === 'Escape') clearContent();
+  };
+
+  useEffect(() => {
+    if (!document) return;
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
   return (
     <main className="flex flex-col min-h-screen">
       <TopBar />
