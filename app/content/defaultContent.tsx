@@ -37,7 +37,7 @@ export default function DefaultContent() {
                     <Suspense
                         fallback={<Loader />}
                         children={[
-                            <OrbitControls key={0} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />,
+                            <OrbitControls key={0} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} minDistance={5} maxDistance={15} />,
                             <ambientLight key={1} intensity={1.5} />,
                             <pointLight key={2} position={[-15, -8, -12]} decay={0} intensity={Math.PI} />,
                             <spotLight key={3} position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />,
