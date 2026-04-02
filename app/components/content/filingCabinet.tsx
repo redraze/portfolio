@@ -46,6 +46,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
   const folder04 = useRef<Object3D<Object3DEventMap> | null>(null);
   const folder05 = useRef<Object3D<Object3DEventMap> | null>(null);
   const folder06 = useRef<Object3D<Object3DEventMap> | null>(null);
+  const folder07 = useRef<Object3D<Object3DEventMap> | null>(null);
 
   const [outlineRef, setOutlineRef] = useState<any>(null);
   const [refMatrix, setRefMatrix] = useState<any>({});
@@ -72,6 +73,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [folder04!.current!.uuid]: [folder04],
       [folder05!.current!.uuid]: [folder05],
       [folder06!.current!.uuid]: [folder06],
+      [folder07!.current!.uuid]: [folder07],
     });
 
     setTargetMap({
@@ -83,8 +85,9 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [folder02!.current!.uuid]: fileNameKeys.ABOUTME,
       [folder03!.current!.uuid]: fileNameKeys.KITCHEN,
       [folder04!.current!.uuid]: fileNameKeys.PAPER_TRADING,
-      [folder05!.current!.uuid]: fileNameKeys.FREELANCE,
-      [folder06!.current!.uuid]: fileNameKeys.SPRQS,
+      [folder05!.current!.uuid]: fileNameKeys.SPRQS,
+      [folder06!.current!.uuid]: fileNameKeys.FREELANCE,
+      [folder07!.current!.uuid]: fileNameKeys.VOLUNTEER,
       [objectNameKeys.BODY]: body!.current!.uuid,
       [folderNameKeys.PROJECTS]: topDrawer!.current!.uuid,
       [folderNameKeys.EXPERIENCE]: bottomDrawer!.current!.uuid,
@@ -93,8 +96,9 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
       [fileNameKeys.ABOUTME]: folder02!.current!.uuid,
       [fileNameKeys.KITCHEN]: folder03!.current!.uuid,
       [fileNameKeys.PAPER_TRADING]: folder04!.current!.uuid,
-      [fileNameKeys.FREELANCE]: folder05!.current!.uuid,
-      [fileNameKeys.SPRQS]: folder06!.current!.uuid,
+      [fileNameKeys.SPRQS]: folder05!.current!.uuid,
+      [fileNameKeys.FREELANCE]: folder06!.current!.uuid,
+      [fileNameKeys.VOLUNTEER]: folder07!.current!.uuid,
     });
   }, []);
 
@@ -144,7 +148,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
         events={{ clickDrawer, onPointerEnter, onPointerLeave, clickFile }}
       />
       <BottomDrawer
-        refs={{ bottomDrawer, bottomDrawerBody, bottomDrawerHandle, folder05, folder06 }}
+        refs={{ bottomDrawer, bottomDrawerBody, bottomDrawerHandle, folder05, folder06, folder07 }}
         nodes={nodes}
         materials={materials}
         events={{ clickDrawer, onPointerEnter, onPointerLeave, clickFile }}
