@@ -24,7 +24,10 @@ export default function DefaultContent() {
 
     return (
         <div className="flex grow relative">
-            { content && <MainPaneTopBar content={content} /> }
+            <div className="flex flex-col grow">
+                { content && <MainPaneTopBar content={content} /> }
+                { content?.component }
+            </div>
             
             <div
                 className={`

@@ -6,7 +6,7 @@ export default function MainPaneTopBar({ content }: { content: FileType }) {
     const { path, icon, filename } = content;
 
     return content && (
-        <nav aria-label="top-bar" className="flex flex-col grow">
+        <nav aria-label="top-bar" className="flex flex-col">
             {/* top half */}
             <div className="flex justify-between bg-[#252526] h-[36px]">
                 {/* file tab */}
