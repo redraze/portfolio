@@ -1,3 +1,5 @@
+import { folderNameKeys } from "~/lib/fileStructure";
+
 export default function BottomDrawer({ refs, nodes, materials, events }: any) {
     const { bottomDrawer, bottomDrawerBody, bottomDrawerHandle, folder05, folder06, folder07 } = refs;
     const { clickDrawer, onPointerEnter, onPointerLeave, clickFile } = events;
@@ -8,7 +10,7 @@ export default function BottomDrawer({ refs, nodes, materials, events }: any) {
             ref={bottomDrawer}
             position={[1.342, -0.729, -0.003]}
             scale={[1.307, 0.857, 1]}
-            onClick={(e) => clickDrawer(e, "experience")}
+            onClick={(e) => clickDrawer(e, folderNameKeys.EXPERIENCE)}
             onPointerEnter={(e) => onPointerEnter(e)}
             onPointerLeave={(e) => onPointerLeave(e)}
         >

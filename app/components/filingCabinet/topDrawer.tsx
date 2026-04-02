@@ -1,3 +1,5 @@
+import { folderNameKeys } from "~/lib/fileStructure";
+
 export default function TopDrawer({ refs, nodes, materials, events }: any) {
     const { topDrawer, topDrawerBody, topDrawerHandle, folder03, folder04 } = refs;
     const { clickDrawer, onPointerEnter, onPointerLeave, clickFile } = events;
@@ -8,7 +10,7 @@ export default function TopDrawer({ refs, nodes, materials, events }: any) {
             position={[1.342, 1.23, -0.003]}
             scale={[1.307, 0.857, 1]}
             ref={topDrawer}
-            onClick={(e) => clickDrawer(e, "projects")}
+            onClick={(e) => clickDrawer(e, folderNameKeys.PROJECTS)}
             onPointerEnter={(e) => onPointerEnter(e)}
             onPointerLeave={(e) => onPointerLeave(e)}
         >
