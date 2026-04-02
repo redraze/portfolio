@@ -1,8 +1,8 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import MainPaneTopBar from "~/components/home/mainPaneTopBar";
-import Loader from "~/components/content/loader";
-import FilingCabinet from "~/components/content/filingCabinet";
+import Loader from "~/components/filingCabinet/loader";
+import FilingCabinet from "~/components/filingCabinet/filingCabinet";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useContentStore } from "~/lib/contentStore";
 
