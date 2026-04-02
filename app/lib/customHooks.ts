@@ -4,7 +4,7 @@ import type { ThreeEvent } from "@react-three/fiber";
 import { useFolderStore } from "./folderStore";
 import { useContentStore } from "./contentStore";
 import { useEventStore } from "./eventStore";
-import { fileSystemMap } from "./fileStructure";
+import { fileSystemMap, folderNameKeys } from "./fileStructure";
 
 export const useClickEvents = (
     actions: {[x: string]: AnimationAction | null },
@@ -19,13 +19,13 @@ export const useClickEvents = (
     const [botDrawerOpen, setBotDrawerOpen] = useState(false);
 
     const stateMap: { [x: string]: [boolean, Dispatch<SetStateAction<boolean>>] } = {
-        "projects": [topDrawerOpen, setTopDrawerOpen],
-        "experience": [botDrawerOpen, setBotDrawerOpen],
+        [folderNameKeys.PROJECTS]: [topDrawerOpen, setTopDrawerOpen],
+        [folderNameKeys.EXPERIENCE]: [botDrawerOpen, setBotDrawerOpen],
     };
     
     const actionsMap: { [x: string]: AnimationAction | null } = {
-        "projects": actions["drawer topAction"],
-        "experience": actions["drawer botAction"],
+        [folderNameKeys.PROJECTS]: actions["drawer topAction"],
+        [folderNameKeys.EXPERIENCE]: actions["drawer botAction"],
     };
 
     const closeAll = (e: ThreeEvent<MouseEvent>) => {

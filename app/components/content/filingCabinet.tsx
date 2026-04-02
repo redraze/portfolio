@@ -11,6 +11,12 @@ import TopDrawer from './topDrawer';
 import BottomDrawer from './bottomDrawer';
 import TableLamp from './tableLamp';
 import TopFolders from './topFolders';
+import { fileNameKeys, folderNameKeys } from '~/lib/fileStructure';
+
+export const objectNameKeys = {
+  BODY: 'body',
+  LAMP: 'lamp',
+};
 
 // props type to be used in imported objects
 export interface BaseObjectProps extends GLTF, ObjectMap {
@@ -69,26 +75,26 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
     });
 
     setTargetMap({
-      [body!.current!.uuid]: "body",
-      [topDrawer!.current!.uuid]: "projects",
-      [bottomDrawer!.current!.uuid]: "experience",
-      [lamp!.current!.uuid]: "lamp",
-      [folder01!.current!.uuid]: "technologies.json",
-      [folder02!.current!.uuid]: "ABOUTME.md",
-      [folder03!.current!.uuid]: "project_1.tsx",
-      [folder04!.current!.uuid]: "project_2.tsx",
-      [folder05!.current!.uuid]: "experience_1.tsx",
-      [folder06!.current!.uuid]: "experience_2.tsx",
-      "body": body!.current!.uuid,
-      "projects": topDrawer!.current!.uuid,
-      "experience": bottomDrawer!.current!.uuid,
-      "lamp": lamp!.current!.uuid,
-      "technologies.json": folder01!.current!.uuid,
-      "ABOUTME.md": folder02!.current!.uuid,
-      "project_1.tsx": folder03!.current!.uuid,
-      "project_2.tsx": folder04!.current!.uuid,
-      "experience_1.tsx": folder05!.current!.uuid,
-      "experience_2.tsx": folder06!.current!.uuid,
+      [body!.current!.uuid]: objectNameKeys.BODY,
+      [topDrawer!.current!.uuid]: folderNameKeys.PROJECTS,
+      [bottomDrawer!.current!.uuid]: folderNameKeys.EXPERIENCE,
+      [lamp!.current!.uuid]: objectNameKeys.LAMP,
+      [folder01!.current!.uuid]: fileNameKeys.TECHNOLOGIES,
+      [folder02!.current!.uuid]: fileNameKeys.ABOUTME,
+      [folder03!.current!.uuid]: fileNameKeys.KITCHEN,
+      [folder04!.current!.uuid]: fileNameKeys.PAPER_TRADING,
+      [folder05!.current!.uuid]: fileNameKeys.FREELANCE,
+      [folder06!.current!.uuid]: fileNameKeys.SPRQS,
+      [objectNameKeys.BODY]: body!.current!.uuid,
+      [folderNameKeys.PROJECTS]: topDrawer!.current!.uuid,
+      [folderNameKeys.EXPERIENCE]: bottomDrawer!.current!.uuid,
+      [objectNameKeys.LAMP]: lamp!.current!.uuid,
+      [fileNameKeys.TECHNOLOGIES]: folder01!.current!.uuid,
+      [fileNameKeys.ABOUTME]: folder02!.current!.uuid,
+      [fileNameKeys.KITCHEN]: folder03!.current!.uuid,
+      [fileNameKeys.PAPER_TRADING]: folder04!.current!.uuid,
+      [fileNameKeys.FREELANCE]: folder05!.current!.uuid,
+      [fileNameKeys.SPRQS]: folder06!.current!.uuid,
     });
   }, []);
 
