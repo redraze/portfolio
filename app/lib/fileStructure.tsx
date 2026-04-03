@@ -1,6 +1,6 @@
 import KitchenProject from "~/content/kitchenProject";
 import PaperTradingProject from "~/content/paperTradingProject";
-import SprqsExperience from "~/content/SprqsExperience";
+import SprqsExperience from "~/content/sprqsExperience";
 import FreelanceExperience from "~/content/freelanceExperience";
 import VolunteerExperience from "~/content/volunteerExperience";
 import Technologies from "~/content/technologies";
