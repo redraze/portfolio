@@ -6,18 +6,20 @@ type PropsType = {
 };
 
 export default function ListElement({ children, onClick }: PropsType) {
-    const style = onClick
-        ? "ml-6 mb-3 text-l text-[#308DE8] w-min-content hover:cursor-pointer hover:underline"
-        : "ml-6 mb-3 text-l text-[#d0d0d0] w-min-content";
+    const spanStyle = onClick
+        ? "text-l text-[#308DE8] hover:cursor-pointer hover:underline"
+        : "text-l text-[#d0d0d0]";
 
     return (
-        <li className="ml-6 text-l text-[#d0d0d0] mb-3">
-            <div
-                className={style}
-                onClick={onClick}
-            >
-                { children }
-            </div>
-        </li>
+        <div className="ml-6 border-l-[3.5px] border-[#1e1e1e] hover:border-[#b5b5b5]">
+            <li className="ml-6">
+                <span
+                    className={spanStyle}
+                    onClick={onClick}
+                    >
+                    { children }
+                </span>
+            </li>
+        </div>
     );
 };
