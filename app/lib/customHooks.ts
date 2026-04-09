@@ -77,13 +77,13 @@ export const useClickEvents = (
     // sync folder state from file system to drawer state in scene
     useEffect(() => {
         Object.entries(folderState).forEach(([foldername, isOpen]) => {
-        const action = actionsMap[foldername];
-        const [state, setState] = stateMap[foldername];
-    
-        if (isOpen === state) return;
-    
-        isOpen ? openDrawer(action) : closeDrawer(action);
-        setState(isOpen);
+            const action = actionsMap[foldername];
+            const [state, setState] = stateMap[foldername];
+        
+            if (isOpen === state) return;
+        
+            isOpen ? openDrawer(action) : closeDrawer(action);
+            setState(isOpen);
         });
     }, [folderState]);
     
