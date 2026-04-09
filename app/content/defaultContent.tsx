@@ -5,22 +5,26 @@ import Loader from "~/components/filingCabinet/loader";
 import FilingCabinet from "~/components/filingCabinet/filingCabinet";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useContentStore } from "~/lib/contentStore";
+import { useEventStore } from "~/lib/eventStore";
 
 export default function DefaultContent() {
     const content = useContentStore((state) => state.content);
     const clearContent = useContentStore((state) => state.clearContent);
-
+    const gaming = useEventStore((state) => state.gaming);
+    
     const [hovered, setHover] = useState(false);
     const [value, setValue] = useState(0);
     const cellThickness = Math.sin(value);
 
     useEffect(() => {
+        if (!gaming) return;
+
         const interval = setInterval(() => {
             setValue(v => (v >= Math.PI ? 0 : v + 0.1));
         }, 100);
 
         return () => clearInterval(interval);
-    }, [])
+    }, [gaming])
 
     return (
         <div className="flex grow relative">
@@ -40,7 +44,7 @@ export default function DefaultContent() {
                 `}
                 onMouseDown={() => clearContent()}
             >
-                <Canvas camera={{ position: [6, 6, -4] }} resize={{ debounce: 0 }}>
+                <Canvas camera={{ position: [4, 4, -3] }} resize={{ debounce: 0 }}>
                     <Suspense
                         fallback={<Loader />}
                         children={[
@@ -60,7 +64,7 @@ export default function DefaultContent() {
                                 sectionThickness={10}
                                 cellColor={'#2b74c9'}
                                 cellSize={1}
-                                cellThickness={cellThickness * 2 + 12}
+                                cellThickness={cellThickness * 2 + (gaming ? 12 : 0)}
                             />,
                         ]}
                     >
