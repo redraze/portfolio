@@ -1,28 +1,25 @@
+import Header from "~/components/markdown/header";
+import ListElement from "~/components/markdown/listElement";
+
 export default function Technologies() {
-    /**
-     * 
-     * some tech I enjoy working with:
-     * 
-     * 
-     * 
-     * react/react native
-     * expo
-     * tanstack
-     * zustand
-     * 
-     * 
-     * node
-     * express
-     * Postgres
-     * Kysely
-     * Better-auth
-     * 
-     * 
-     * Github actions
-     * Docker
-     * AWS S3, EC2, (look up what else I worked with)
-     * 
-     * 
-     */
-    return <span>technologies</span>
-}
+    return (<>
+        <Header size="large">Some Tech I Like Working With</Header>
+
+        <ListElement>React/React Native</ListElement>
+        <ListElement>Expo</ListElement>
+        <ListElement>TanStack</ListElement>
+        <ListElement>Zustand</ListElement>
+
+        <Header size="medium"></Header>
+        <ListElement>Node</ListElement>
+        <ListElement>Express</ListElement>
+        <ListElement>Postgres</ListElement>
+        <ListElement>Kysely</ListElement>
+        <ListElement>Better-Auth</ListElement>
+
+        <Header size="medium"></Header>
+        <ListElement>Github Actions</ListElement>
+        <ListElement>Docker</ListElement>
+        <ListElement>AWS (S3, EC2, ...)</ListElement>
+    </>);
+};
