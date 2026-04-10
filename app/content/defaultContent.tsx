@@ -31,7 +31,7 @@ export default function DefaultContent() {
             <div className="flex flex-col grow">
                 { content && <MainPaneTopBar content={content} /> }
                 { content?.component && 
-                    <div className="px-8 pt-12 overflow-auto absolute h-[100%] w-[100%]">
+                    <div className="px-8 pt-14 overflow-auto absolute h-[100%] w-[100%]">
                         { content.component }
                         <div className="h-[85vh]"></div>
                     </div>
