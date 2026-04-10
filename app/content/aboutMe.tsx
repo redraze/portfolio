@@ -34,9 +34,9 @@ export default function AboutMe() {
                     Software Development (I'm self taught!)
                 </a>
             </ListElement>
-            <ListElement>Frisbee, hiking, and biking, longboarding, snowboarding</ListElement>
+            <ListElement>Frisbee, hiking, biking, longboarding, snowboarding</ListElement>
             <ListElement>Paddleboarding, diving, cold plunges at Alki</ListElement>
-            <ListElement onClick={openKitchenContent}>Cooking</ListElement>
+            <ListElement onClick={openKitchenContent}>Cooking!</ListElement>
 
             <Header size={'medium'}>Deployment (Traveling)</Header>
             <Text>Currently living in West Seattle, but I've lived all over the place!</Text>
@@ -45,13 +45,18 @@ export default function AboutMe() {
             <ListElement>Taught English there from 2015 to 2018</ListElement>
             <ListElement>Gained Mandarin Chinese proficiency up to about HSK2 (my favorite part was writing)</ListElement>
             <ListElement>My food love affairs: 牛肉拉面, 红烧猪肉, 上海生煎馒头, 小笼包</ListElement>
-            <ListElement>Visited: Japan, South Korea, Thailand, the UAE in the middle of July</ListElement>
+            <ListElement>Visited: Japan, South Korea, Thailand, and the UAE in the middle of July because I'm so smart</ListElement>
 
             <Header size="small" styles="mt-4">🌍 Kyiv, Ukraine</Header>
             <ListElement>Слава Україна!</ListElement>
-            <ListElement>Lived here from 2018 to 2020.</ListElement>
-            <ListElement>Still don't speak Ukrainian very well 😅</ListElement>
-            <ListElement>Visited: ☢️ Chornobyl, Germany, Italy, Poland</ListElement>
+            <ListElement>Lived here from 2018 to 2020</ListElement>
+            <ListElement>Favorite spots in the city:
+                <ListElement>Graffiti covered water overflow channel going from Lybidska to Olimpiiska</ListElement>
+                <ListElement>Having breakfeast with the street artists near Arsenalna</ListElement>
+                <ListElement>Parkouring through the abandoned docks along the Dnipro near Hidropark</ListElement>
+            </ListElement>
+            <ListElement>I still don't speak Ukrainian very well, but my wife would love for me to learn 😅</ListElement>
+            <ListElement>Visited: The Carpathians, Odesa, ☢️Chornobyl☢️, Germany, Italy, Greece, and Poland</ListElement>
         </section>
     );
 };
