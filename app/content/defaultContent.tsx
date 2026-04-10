@@ -33,7 +33,7 @@ export default function DefaultContent() {
                 { content?.component && 
                     <div className="px-8 pt-14 overflow-auto absolute h-[100%] w-[100%]">
                         { content.component }
-                        <div className="h-[85vh]"></div>
+                        <div className="h-[75vh]"></div>
                     </div>
                 }
             </div>
