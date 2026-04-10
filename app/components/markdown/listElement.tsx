@@ -7,8 +7,8 @@ type PropsType = {
 
 export default function ListElement({ children, onClick }: PropsType) {
     const spanStyle = onClick
-        ? "text-l text-[#308DE8] hover:cursor-pointer hover:underline"
-        : "text-l text-[#d0d0d0]";
+        ? "text-[#308DE8] hover:cursor-pointer hover:underline"
+        : "text-[#d0d0d0]";
 
     return (
         <div className="ml-6 border-l-[3.5px] border-[#1e1e1e] hover:border-[#b5b5b5]">
@@ -16,7 +16,7 @@ export default function ListElement({ children, onClick }: PropsType) {
                 <span
                     className={spanStyle}
                     onClick={onClick}
-                    >
+                >
                     { children }
                 </span>
             </li>

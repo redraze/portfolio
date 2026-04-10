@@ -15,6 +15,9 @@ body {
   @apply bg-[#1e1e1e];
   @apply text-white;
 }
+a {
+  @apply text-[#308DE8] hover:cursor-pointer hover:underline;
+}
 
 .normalText {
   color: #ffffffb3;

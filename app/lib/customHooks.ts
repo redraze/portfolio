@@ -85,7 +85,7 @@ export const useClickEvents = (
             isOpen ? openDrawer(action) : closeDrawer(action);
             setState(isOpen);
         });
-    }, [folderState]);
+    }, [folderState, stateMap]);
     
     return { closeAll, clickDrawer, clickFile }
 };

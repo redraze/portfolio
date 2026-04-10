@@ -25,10 +25,11 @@ export default function AboutMe() {
             <Header size={'large'}>Welcome to my Profile!</Header>
             {/* picture of me! */}
             <Text>A modern, production-ready developer for building full-stack applications.</Text>
+            <Text>I like working on stuff that is either beneficial for people or just fun to build.</Text>
             <Text>Feel free to look around. You might find some easter eggs!</Text>
 
             <Header size={'medium'}>Features (Hobbies)</Header>
-            <ListElement onClick={() => {}}>
+            <ListElement>
                 <a href="https://github.com/redraze" target="_blank" rel="noopener noreferrer">
                     Software Development (I'm self taught!)
                 </a>
