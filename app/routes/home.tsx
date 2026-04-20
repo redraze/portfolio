@@ -18,9 +18,11 @@ export default function Home() {
   const clearContent = useContentStore((state) => state.clearContent);
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    e.preventDefault();
     const key = e.key;
-    if (key === 'Escape') clearContent();
+    if (key === 'Escape') {
+      e.preventDefault();
+      clearContent();
+    };
   };
 
   useEffect(() => {
