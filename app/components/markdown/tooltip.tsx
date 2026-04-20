@@ -12,7 +12,7 @@ export default function Tooltip({ children, tooltip }: { children?: ReactNode, t
         <>
             <span> </span>
             <div
-                className={`cursor-pointer inline flex flex-row bg-[${styles.background}] *:ml-[1px] py-1`}
+                className="cursor-pointer inline flex flex-row underline *:ml-[1px] py-1"
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             >
@@ -23,8 +23,8 @@ export default function Tooltip({ children, tooltip }: { children?: ReactNode, t
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    fill={styles.background}
-                    stroke={styles.color}
+                    fill={"#1e1e1e"}
+                    stroke={"#c1c1c1"}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -35,9 +35,4 @@ export default function Tooltip({ children, tooltip }: { children?: ReactNode, t
             </div>
         </>
     );
-};
-
-const styles = {
-    color: "#c1c1c1",
-    background: "#1e1e1e",
 };
