@@ -1,4 +1,5 @@
 import Header from "~/components/markdown/header";
+import Link from "~/components/markdown/link";
 import ListElement from "~/components/markdown/listElement";
 import Text from "~/components/markdown/text";
 import { useContentStore } from "~/lib/contentStore";
@@ -22,7 +23,7 @@ export default function VolunteerExperience() {
 
     return (<>
         <Header size="large">Volunteer Work</Header>
-        <Text>Early 2025 I volunteered some time at <a href="https://keelworks.org/">Keelworks</a>, an organization dedicated to helping software developers gain experience.</Text>
+        <Text>Early 2025 I volunteered some time at <Link href="https://keelworks.org/">Keelworks</Link>, an organization dedicated to helping software developers gain experience.</Text>
 
         <Header size="medium">Why?</Header>
         <Text>There were two reasons I decided to volunteer at Keelworks:</Text>
