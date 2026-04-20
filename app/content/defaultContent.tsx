@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import MainPaneTopBar from "~/components/home/mainPaneTopBar";
 import Loader from "~/components/filingCabinet/loader";
@@ -16,6 +16,14 @@ export default function DefaultContent() {
     const [value, setValue] = useState(0);
     const cellThickness = Math.sin(value);
 
+    const scrollableRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (scrollableRef?.current) {
+            scrollableRef.current.scrollTop = 0;
+        };
+    }, [content]);
+
     useEffect(() => {
         if (!gaming) return;
 
@@ -31,7 +39,10 @@ export default function DefaultContent() {
             <div className="flex flex-col grow">
                 { content && <MainPaneTopBar content={content} /> }
                 { content?.component && 
-                    <div className="px-8 pt-14 overflow-auto absolute h-[100%] w-[100%]">
+                    <div
+                        ref={scrollableRef}
+                        className="px-8 pt-14 overflow-auto absolute h-[100%] w-[100%]"
+                    >
                         { content.component }
                         <div className="h-[75vh]"></div>
                     </div>

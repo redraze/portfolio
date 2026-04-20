@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import type { ReactNode } from 'react';
 
-interface EventState {
+interface TooltipState {
   tooltip: ReactNode | null,
   setTooltip: (newTarget: ReactNode) => void,
   clearTooltip: () => void,
@@ -10,7 +10,7 @@ interface EventState {
 /**
  * Store for tracking mouse events.
  */
-export const useTooltipStore = create<EventState>((set) => ({
+export const useTooltipStore = create<TooltipState>((set) => ({
     tooltip: null,
     setTooltip: (newTooltip) => set({ tooltip: newTooltip }),
     clearTooltip: () => set({ tooltip: null }),

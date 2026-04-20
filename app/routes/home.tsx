@@ -61,7 +61,7 @@ function TooltipProvider({ children }: { children: ReactNode }) {
         <div
           style={{ top: y, left: x }}
           className="absolute px-[9px] py-[3px] border-1 border-[#1e1e1e] bg-[#1e1e1e] rounded-sm"
-          >
+        >
           { tooltip }
         </div>
       }
