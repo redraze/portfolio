@@ -1,30 +1,9 @@
+import Header from "~/components/markdown/header";
+import ListElement from "~/components/markdown/listElement";
+import Text from "~/components/markdown/text";
+
 export default function FreelanceExperience() {
     /**
-     * 
-     * =============
-     * BOON WATER
-     * =============
-     * 
-     * water usage tracking and reporting tool for a small-scale, well water dependent community
-     * really proud of this one!
-     * 
-     * the pipes in this system were old, so my app monitirs for abnormal water usage/loss and send alerts to the well admin
-     * manage users, excel-like data entry, billing, payments tracking (not payment making)
-     * generates quarterly PDF water bills for users and water reports for the county
-     * integrates with 3rd party API sendgrid to automate sending water bills and reports
-     * 
-     * 
-     * next.js, typescript, react, node, Postgres, tailwind and postCSS
-     * github actions, MS Azure
-     * 
-     * 
-     * looking back on this, my software architecture patters had improved a lot since my first project!
-     * could still improve:
-     * - request handling by implementing client-side caching
-     * - authentication by bundling endpoints into authorized/unauthorized groups (as opoased to handling auth on every individual page)
-     * - error tracking/logging was lacking
-     * 
-     * 
      * =============
      * NEVERENDING
      * =============
@@ -38,5 +17,36 @@ export default function FreelanceExperience() {
      * AWS S3, EC2
      * 
      */
-    return <span>freelance</span>
+    return (
+        <>
+            <Header size="large">Freelance Experience</Header>
+            <Text>Originally I got into web development to work on cool projects that will simplify people's lives or work, so I was really excited when I landed my first gig as a freelancer!</Text>
+
+            <section about="boon water">
+                <Header size="medium">Boon Water</Header>
+                <Text>Boon Water is a tiny company of neighbors that came together to manage their well water system themselves.</Text>
+                <Text>In the past I had worked with them to build and update their old-school Excel spreadsheets that were used for tracking water usage. Since I already knew what they wanted, I tried to make something familiar and straightforward.</Text>
+
+                <Header size="small">Features</Header>
+                <Text>Besides the base features of water user management and data entry, I added:</Text>
+                <ListElement>Billing - integrated Sendgrid API for sending water bills to neighbors and for sending quarterly reports to the county</ListElement>
+                <ListElement>Monitoring - the pipes for the water system were pretty old, so I made sure to add checks to detect overconsumption and water leaks</ListElement>
+
+                <Header size="small" styles="mt-4">Stack</Header>
+                <ListElement>React + Typescript, PostCSS + SASS</ListElement>
+                <ListElement>NextJS for API endpoints and some SSR</ListElement>
+                <ListElement>MongoDB</ListElement>
+                <ListElement>A Github Actions pipeline deploying to MS Azure</ListElement>
+
+                <Header size="small" styles="mt-4">TODOs</Header>
+                <ListElement>Wireless water meters - streamline data entry and give more accurate water alerts</ListElement>
+                <ListElement>Payments - enable neighbors to pay their bills online instead of mailing checks</ListElement>
+            </section>
+
+            <section about="never ending">
+                <Header size="medium">NeverEnding</Header>
+                <Text></Text>
+            </section>
+        </>
+    )
 }
