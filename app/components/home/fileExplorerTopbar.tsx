@@ -23,7 +23,7 @@ const iconStyles = {
 
 const styles = {
     group: "flex justify-center items-center relative hover:cursor-pointer group",
-    tooltip: "hidden group-hover:block absolute top-[27.5px] bg-[#252526] w-min whitespace-nowrap px-2 py-[1px] border-1 border-[#ffffff30] rounded-sm text-[14px] normalText z-10",
+    tooltip: "hidden group-hover:block absolute top-[27.5px] bg-[#252526] w-min whitespace-nowrap px-2 py-[1px] border-1 border-[#ffffff30] rounded-sm text-[14px] normalText z-20",
 };
 
 const elements = [
