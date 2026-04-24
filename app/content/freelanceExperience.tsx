@@ -2,7 +2,7 @@ import Header from "~/components/markdown/header";
 import ListElement from "~/components/markdown/listElement";
 import Text from "~/components/markdown/text";
 import Tooltip from "~/components/markdown/tooltip";
-import jira from 'public/jira.gif';
+import jira from '~/assets/jira.gif';
 import Link from "~/components/markdown/link";
 
 export default function FreelanceExperience() {
@@ -44,7 +44,7 @@ export default function FreelanceExperience() {
                 </Text>
 
                 <Header size="small">Projects</Header>
-                <Text>My main task of integrating the Unity project consisted of designing React components and a <Link href="https://react-unity-webgl.dev/">React-Unity-WebGL wrapper</Link>, which ended up not taking me very long to finish, so I went looking for other stuff to work on.</Text>
+                <Text>My main task of integrating the Unity project consisted of designing React components and a <Link href="https://react-unity-webgl.dev/">React-Unity-WebGL</Link> wrapper, which ended up not taking me very long to finish, so I went looking for other stuff to work on.</Text>
                 <Text>Up to this point I had super limited experience working with cloud provider services, which is why I took the intitiative to:</Text>
                 <ListElement>Build a Github Actions pipeline that responds to updates in the Unity project files, invalidating and pushing updates to the AWS CloudFront CDN</ListElement>
                 <ListElement>Configure a new AWS service cluster (S3, EC2, Route53, Elastic IP) for handling API requests from character creation services</ListElement>
