@@ -39,12 +39,11 @@ export default function DefaultContent() {
             <div className="flex flex-col grow">
                 { content && <MainPaneTopBar content={content} /> }
                 { content?.component && 
-                    <div
-                        ref={scrollableRef}
-                        className="px-8 pt-14 overflow-auto absolute h-[100%] w-[100%]"
-                    >
-                        { content.component }
-                        <div className="h-[75vh]"></div>
+                    <div className="px-8 pt-14 absolute h-[100%] w-[100%] flex flex-col">
+                        <div ref={scrollableRef} className="overflow-auto ">
+                            { content.component }
+                            <div className="h-[75vh]"></div>
+                        </div>
                     </div>
                 }
             </div>
