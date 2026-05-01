@@ -25,7 +25,7 @@ export default function FreelanceExperience() {
                 <Text>
                     On top of my assigned dev duties, I quickly became the manager and first line of support for three teams of interns.
                     This was the first time I had even worked as an individual contributor in a dev team so I was really overwhlemed at first
-                    (<Tooltip tooltip={<img src={jira} alt="...loading..." />} >
+                    (<Tooltip tooltip={<img src={jira} alt="..." />} >
                         especially with all the meetings!
                     </Tooltip>
                     ), but in the end I had a ton of fun and am super grateful for the oportunity to work with all the diverse teams at NeverEnding.
