@@ -1,4 +1,4 @@
-export default function TableLamp({ refs, nodes, materials, events, lampOn }: any) {
+export default function TableLamp({ refs, nodes, materials, events, lights }: any) {
     const { lamp, lampBody, bulb } = refs;
     const { toggleLamp, onPointerEnter, onPointerLeave } = events;
     return (
@@ -27,13 +27,13 @@ export default function TableLamp({ refs, nodes, materials, events, lampOn }: an
                     castShadow
                     receiveShadow
                     geometry={nodes.Cube002_1.geometry}
-                    material={lampOn ? materials.bulb : materials.shell}
+                    material={lights ? materials.bulb : materials.shell}
                 />
             </group>
 
             <spotLight
                 name="Spot"
-                intensity={lampOn ? 5 : 0}
+                intensity={lights ? 5 : 0}
                 angle={0.973}
                 penumbra={0.1}
                 decay={2}

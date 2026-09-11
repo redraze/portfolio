@@ -16,6 +16,8 @@ export default function DefaultContent() {
     const [value, setValue] = useState(0);
     const cellThickness = Math.sin(value);
 
+    const [lights, setLights] = useState(true);
+
     const scrollableRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -61,9 +63,9 @@ export default function DefaultContent() {
                         children={[
                             <OrbitControls key={0} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} minDistance={5} maxDistance={15} />,
                             <ambientLight key={1} intensity={1.5} />,
-                            <pointLight key={2} position={[-15, -8, -12]} decay={0} intensity={Math.PI} />,
-                            <spotLight key={3} position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />,
-                            <FilingCabinet key={4} setHover={setHover} />,
+                            <pointLight key={2} position={[-15, -8, -12]} decay={0} intensity={lights ? Math.PI : 0} />,
+                            <spotLight key={3} position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={lights ? Math.PI : 0} />,
+                            <FilingCabinet key={4} setHover={setHover} lights={lights} setLights={setLights} />,
                             <Grid
                                 key={5}
                                 position={[0,-2,0]}

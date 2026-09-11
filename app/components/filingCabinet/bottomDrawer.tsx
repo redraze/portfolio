@@ -37,7 +37,7 @@ export default function BottomDrawer({ refs, nodes, materials, events }: any) {
                 receiveShadow
                 geometry={nodes.folder05.geometry}
                 material={materials.folder}
-                position={[-1.86, -0.354, -0.365]}
+                position={[-1.86, -0.354, -0.39]}
                 rotation={[1.836, -0.039, -1.541]}
                 scale={[1.316, 1.53, 1.156]}
                 onClick={(e) => clickFile(e)}
@@ -51,7 +51,7 @@ export default function BottomDrawer({ refs, nodes, materials, events }: any) {
                 receiveShadow
                 geometry={nodes.folder06.geometry}
                 material={materials.folder}
-                position={[-2.304, -0.354, -0.365]}
+                position={[-2.304, -0.354, -0.39]}
                 rotation={[1.836, -0.039, -1.541]}
                 scale={[1.316, 1.53, 1.156]}
                 onClick={(e) => clickFile(e)}
@@ -65,7 +65,7 @@ export default function BottomDrawer({ refs, nodes, materials, events }: any) {
                 receiveShadow
                 geometry={nodes.folder06.geometry}
                 material={materials.folder}
-                position={[-2.748, -0.354, -0.365]}
+                position={[-2.748, -0.354, -0.39]}
                 rotation={[1.836, -0.039, -1.541]}
                 scale={[1.316, 1.53, 1.156]}
                 onClick={(e) => clickFile(e)}

@@ -24,7 +24,7 @@ export interface BaseObjectProps extends GLTF, ObjectMap {
   events: { [x: string]: (e: ThreeEvent<MouseEvent>, foldername?: string) => void },
 };
 
-export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStateAction<boolean>> }) {
+export default function FilingCabinet({ setHover, lights, setLights }: { setHover: Dispatch<SetStateAction<boolean>>, lights: boolean, setLights: Dispatch<SetStateAction<boolean>> }) {
   const gltf = useGLTF('/filingCabinet.gltf');
   const group = useRef(null);
   const { nodes, materials, animations } = gltf;
@@ -105,10 +105,9 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
   const { onPointerEnter, onPointerLeave } = useHoverEvents(setHover, setOutlineRef, refMatrix, targetMap);
   const { closeAll, clickDrawer, clickFile } = useClickEvents(actions, targetMap);
 
-  const [lampOn, setLampOn] = useState(true);
   const toggleLamp = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
-    setLampOn((prev) => !prev);
+    setLights((prev) => !prev);
   };
 
   return (<>
@@ -133,7 +132,7 @@ export default function FilingCabinet({ setHover }: { setHover: Dispatch<SetStat
         nodes={nodes}
         materials={materials}
         events={{ toggleLamp, onPointerEnter, onPointerLeave }}
-        lampOn={lampOn}
+        lights={lights}
       />
       <TopFolders
         refs={{ folder01, folder02 }}
