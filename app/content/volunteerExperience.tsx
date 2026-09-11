@@ -23,20 +23,25 @@ export default function VolunteerExperience() {
 
     return (<>
         <Header size="large">Volunteer Work</Header>
-        <Text>Early 2025 I volunteered some time at <Link href="https://keelworks.org/">Keelworks</Link>, an organization dedicated to helping software developers gain experience.</Text>
+        <Text>Early 2025 I spent a few months volunteering time at <Link href="https://keelworks.org/">Keelworks</Link>, an organization dedicated to helping software developers gain experience.</Text>
 
         <Header size="medium">Why?</Header>
         <Text>There were two reasons I decided to volunteer at Keelworks:</Text>
         <ListElement>Keelworks was working on a water utility management web application, and I wanted to offer some expertise and fresh ideas since I had <a onClick={openFreelanceContent}>built something similar while freelancing</a></ListElement>
-        <ListElement>I remember how difficult is was starting out and not being to even land an interview, and I wanted to offer what I knew to other developers</ListElement>
+        <ListElement>I remember how difficult is was starting out as a software developer and not being able land to even land an interview, and I wanted to offer what I knew to other developers</ListElement>
 
-        <Header size="medium">The Project</Header>
-        <Text>Their frontend team was blocked because they weren't getting the APIs they needed for their login/signup flow, so I filled in as a backend engineer.</Text>
-        <Text>I cleaned up thier Node + Express server configuration, updated Postgres db schemas, and wrote new models and controllers to handle JWT authentication.</Text>
-        <Text>Within a week I was serving new requests and had their team completely unblocked.</Text>
+        <Header size="medium">The Issue</Header>
+        <Text>Their frontend team's progress was blocked because they weren't getting the APIs they needed for their login/signup flow, so I filled in as a backend engineer.</Text>
+        <Text>I cleaned up thier server configuration, updated their db schemas, and wrote new models and controllers to provide authentication using JWTs.</Text>
+        <Text>Within a week their backend was serving new requests and the frontend team was completely unblocked.</Text>
 
-        <Header size="medium">The Results</Header>
-        <Text>I only volunteered for a few months at Keelworks, but I really enjoyed working with the people there.</Text>
-        <Text>It was also really great to see just how far I had come as a software engineer! A year or two prior and I really would have struggled to understand and solve the team's issues and drive progress towards the team's goals.</Text>
+        <Header size="medium">The Team</Header>
+        <Text>I also made sure to take the time to educate the more junior team members.</Text>
+        <Text>A few times a week I would schedule group training/catchup meetings where I would teach:</Text>
+        <ListElement>Basic setup and installation for the necessities, like running local servers, DBs, and Docker</ListElement>
+        {/* <ListElement>Data fetching strategies and app security </ListElement> */}
+        <ListElement>Node + Express, API design, and data CRUD with PostgreSQL</ListElement>
+        <ListElement>User input validation and app security</ListElement>
+        <Text styles="mt-4">I also made sure to leave behind plenty of documentation to help the team succeed after I left.</Text>
     </>);
 };
