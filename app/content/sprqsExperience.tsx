@@ -14,8 +14,9 @@ export default function SprqsExperience() {
             <Header size="medium">Favorite Projects (so far)</Header>
 
             <Header size="small">Social Graph DB</Header>
-            <Text>An early task for me was to design the database that enables users to interact with each other. For this I took inspiration from <Link href="https://engineering.fb.com/2013/06/25/core-infra/tao-the-power-of-the-graph/">Facebook's TAO</Link> and used join tables to store friend requests, connections, and messages between users.</Text>
-            <Text>I followed the same approach to represent user ownership of our collectable "moji", and soon realized that most problems in life can actually be solved by thinking in edges and vertices.</Text>
+            <Text>An early task for me was to design the database that enables users to interact with each other. For this I took inspiration from <Link href="https://engineering.fb.com/2013/06/25/core-infra/tao-the-power-of-the-graph/">Facebook's TAO</Link>. I used join tables to store friend requests, connections, and messages between users, and followed the same approach to represent user ownership of our collectable "moji".</Text>
+            <Text>Seems like most problems in life can be solved with join tables actually.</Text>
+            <Text>I also made sure to write a few migration scripts for managing the team's multiple DB environments, which was something I had never done before.</Text>
 
             <Header size="small">Notifications</Header>
             <Text>Having spent a lot of time recently reading about system design, I was super excited to jump into building my first scalable notifications system.</Text>
@@ -29,32 +30,34 @@ export default function SprqsExperience() {
             {/* ---------------------------------------------------------------------- */}
 
             <Header size="medium">Learning Curves</Header>
-            <Text>I continue to face tons of new challenges at Sprqs, which has genuinely been fantastic because I can say I've grown more working here than I have from all of my previous experience + projects combined.</Text>
+            <Text>I continue to face tons of new challenges at Sprqs which has genuinely been fantasti. I've grown more working here than I have anywhere else.</Text>
 
             <Header size="small">Thinking Bigger</Header>
+            <Text>Sprqs is the first app I've built that needs to be cross-platform and be able to scale, which has forced me to plan a bit differently.</Text>
             <Text>
-                Sprqs is the first app I've built that needs to be cross-platform and be able to scale, which has forced me to plan a bit differently.
                 I chose to work with Expo and React Native to save the team from building two separate apps in two separate languages.
-            </Text>
-            <Text>
                 {/* TODO -- scale */}
-                scalable apis and db queries
+                {/* scalable apis and db queries
                 offload heavy/lengthy computations to task queues and microservices
+                abstractions (both scalable in themsleves and allowing the team to work faster) */}
             </Text>
 
 
             <Header size="small">As Tech Lead</Header>
-            <Text>Successfully leading a team requires in-depth planning and tight communication. For this I rely heavily on:</Text>
-            <ListElement>Discord for check-ins</ListElement>
-            <ListElement>Figma for mocking up new screens and components</ListElement>
-            <ListElement>Miro for designing DB schema</ListElement>
-            <ListElement>Postman and Jest for manual and automated API testing</ListElement>
+            <Text>
+                Successfully leading a team obviously requires a ton of in-depth planning and tight communications.
+                At first I found this to be really frustrating and tedious because I felt like I was wasting time not developing our app.
+            </Text>
+            <Text>
+                Now, having shifted perspective, I really value having a new feature come out as expected 
+                and to be able to celebrate a shared success with my team.
 
-            <Text>I also work hard to provide useful tooling to abstract away repetitive tasks so my team and I can develop quickly. Error boundaries and message brokers provide a quick way to communicate useful information to users.</Text>
+                I believe that a well aligned team is much more capabale than any single dev, 
+                and I enjoy taking the time and making the effort to thoroughly plan ahead.
+            </Text>
 
             {/* <Text styles="mt-4">I am also expected to research tech, provide coding standards, and support my team's development.</Text> */}
             {/* <ListElement>choosing the right tech, and building for cross-platform (love u, expo)</ListElement> */}
-
             {/* <ListElement>setting coding standards, and providing abstractions to support fast development</ListElement> */}
         </>
     );

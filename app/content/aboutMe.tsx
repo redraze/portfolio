@@ -4,6 +4,7 @@ import Header from "~/components/markdown/header";
 import Text from "~/components/markdown/text"
 import ListElement from "~/components/markdown/listElement";
 import { fileNameKeys, fileSystemMap, folderNameKeys } from "~/lib/fileStructure";
+import Link from "~/components/markdown/link";
 
 export default function AboutMe() {
     const setContent = useContentStore((state) => state.setContent);
@@ -20,12 +21,22 @@ export default function AboutMe() {
         });
     };
 
+    const openSprqsContent = () => {
+        const content = fileSystemMap[fileNameKeys.SPRQS];
+        setContent(content);
+
+        setFolderState({
+            ...folderState,
+            [folderNameKeys.EXPERIENCE]: true,
+        });
+    }
+
     return (
         <section>
             <Header size={'large'}>Welcome!</Header>
-            {/* picture of me! */}
+            {/* picture of me? */}
             <Text styles="text-lg">A modern, production-ready developer with experience building full-stack applications.</Text>
-            {/* <Text>I like working on stuff that is either beneficial for people or just fun to build.</Text> */}
+            <Text styles="text-lg">Founding engineer for <Link onClick={openSprqsContent}>Sprqs</Link>.</Text>
             {/* <Text>Look around - you might find some easter eggs!</Text> */}
 
             <Header size={'medium'}>Features (Hobbies)</Header>
