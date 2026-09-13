@@ -15,7 +15,7 @@ const textSizeMap = {
 export default function Header({ children, size, styles }: PropsType) {
     const textSize = textSizeMap[size];
     const bottomBorder = size !== 'small' && 'border-b-1 border-b-[#414141]';
-    const bottomMargin = size !== 'small' && 'my-8';
+    const bottomMargin = size !== 'small' ? 'my-8' : 'my-4';
     const borderLeft = children && 'hover:border-l-[#b5b5b5]';
 
     return (

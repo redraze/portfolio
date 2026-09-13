@@ -1,44 +1,61 @@
 import Header from "~/components/markdown/header";
 import Link from "~/components/markdown/link";
+import ListElement from "~/components/markdown/listElement";
 import Text from "~/components/markdown/text";
 
 export default function SprqsExperience() {
     return (
         <>
             <Header size="large">Sprqs</Header>
-            <Text>Founding Engineer for <Link href="https://sprqs.com/">✨SPRQS✨</Link>, the up-and-coming, <span className="rainbow-text">HOT AS HECK</span> social messaging app built to provide a safe space for friends to send each other fun, anonymous mesages to brighten each other's days.</Text>
+            <Text>Founding Engineer for <Link href="https://sprqs.com/">✨SPRQS✨</Link>, the up-and-coming, <span className="rainbow-text">HOT AS HECK</span> social messaging app built to provide a safe space for friends to brighten each other's days by sending each other fun, anonymous mesages.</Text>
 
-            <Header size="medium">Learning Curves</Header>
-            <Text>I continue to face tons of new challenges at Sprqs, which has genuinely been fantastic because I can say I've grown more working at Sprqs than I have from all of my previous experience + projects combined.</Text>
-            {/* coding standards */}
-            {/* a cross platform app is something I've never worked on before, i had only built for web previously. complain about apple? */}
-            {/* lots more planning than anything i've worked on before */}
-            {/* breaking down problems into separate manageable bites for my team instead of diving in headlong as a solo dev */}
-            {/* more complex queries than I've written before (CTE tables to limit db queries, transactions for ACID) */}
+            {/* ---------------------------------------------------------------------- */}
 
-            <Header size="medium">Initialization</Header>
-            <Text>I initially spent a lot of time learning about and implementing abstractions to make it easy for my team to develop quickly. While building these I focused a lot on simplicity of use and extensibility. A few that I'm really proud of are:</Text>
+            <Header size="medium">Favorite Projects (so far)</Header>
 
-            <Header size="small">Front End Data Handling</Header>
-            <Text>With the goal of minimizing the number of queries our backend had to deal with, I installed <Link href="https://tanstack.com/query/latest">React Query</Link> and setup a key factory for reuse throughout the app. I then wrote a library of custom hooks used to handle API communication in order to keep our components from becoming too bloated with fetches and cache updates.</Text>
-            {/* also recently removed axios because it got pwned lol */}
-
-            <Header size="small">Front End Message Broker</Header>
-            <Text>A paired context + wrapper, built with <Link href="https://zustand.docs.pmnd.rs/learn/getting-started/introduction">Zustand</Link>, that catches and handles messages and errors thrown from any component asynchronously via a message queue.</Text>
-
-            <Header size="small">Back End Error Handling</Header>
-            {/* custom error class constructors used throwing errors from any controller */}
-            {/* error boundary express middleware that gracefully handles any errors throw, and returns appropriate API responses */}
-
-            <Header size="small">DB Migrations</Header>
-            {/* I wanted my teammates to be able to easily reproduce our DB for testing */}
-
-
-            <Header size="medium">Favorite Projects</Header>
-            {/* TODO */}
+            <Header size="small">Social Graph DB</Header>
+            <Text>An early task for me was to design the database that enables users to interact with each other. For this I took inspiration from <Link href="https://engineering.fb.com/2013/06/25/core-infra/tao-the-power-of-the-graph/">Facebook's TAO</Link> and used join tables to store friend requests, connections, and messages between users.</Text>
+            <Text>I followed the same approach to represent user ownership of our collectable "moji", and soon realized that most problems in life can actually be solved by thinking in edges and vertices.</Text>
 
             <Header size="small">Notifications</Header>
-            {/* TODO */}
+            <Text>Having spent a lot of time recently reading about system design, I was super excited to jump into building my first scalable notifications system.</Text>
+            <Text>To minimize our app's use of the use of <Link href="https://docs.expo.dev/push-notifications/sending-notifications/">Expo push service</Link>, I chose to take a hybrid approach:</Text>
+            <ListElement>First, I defined an SSE client manager that stores online users' HTTPS response objects, allowing future live events to be sent to clients that can then be presented as in-app notifications or silent cache updates</ListElement>
+            <ListElement>Next, for offline users, I set up a few async <Link href="https://github.com/timgit/pg-boss">pg-boss</Link> task queues to handle sending push notification requests to APN and FCN via the Expo push service</ListElement>
+            <Text styles="mt-4">Another critically important step was to meet the strict requirements for using the Apple and Google notifications APIs. I set up another set of task queue</Text>
+            <ListElement>Handle rejected tickets like, for example, notifications sent to users who have deleted our app. I set up a secondary pool of task queues to handle rejected Expo push tickets.</ListElement>
+            <ListElement>Not exceed the certain sent tickets per hour usage threshholds. For this I queued long lived tasks with singleton keys to block similar subsequent requests.</ListElement>
+
+            {/* ---------------------------------------------------------------------- */}
+
+            <Header size="medium">Learning Curves</Header>
+            <Text>I continue to face tons of new challenges at Sprqs, which has genuinely been fantastic because I can say I've grown more working here than I have from all of my previous experience + projects combined.</Text>
+
+            <Header size="small">Thinking Bigger</Header>
+            <Text>
+                Sprqs is the first app I've built that needs to be cross-platform and be able to scale, which has forced me to plan a bit differently.
+                I chose to work with Expo and React Native to save the team from building two separate apps in two separate languages.
+            </Text>
+            <Text>
+                {/* TODO -- scale */}
+                scalable apis and db queries
+                offload heavy/lengthy computations to task queues and microservices
+            </Text>
+
+
+            <Header size="small">As Tech Lead</Header>
+            <Text>Successfully leading a team requires in-depth planning and tight communication. For this I rely heavily on:</Text>
+            <ListElement>Discord for check-ins</ListElement>
+            <ListElement>Figma for mocking up new screens and components</ListElement>
+            <ListElement>Miro for designing DB schema</ListElement>
+            <ListElement>Postman and Jest for manual and automated API testing</ListElement>
+
+            <Text>I also work hard to provide useful tooling to abstract away repetitive tasks so my team and I can develop quickly. Error boundaries and message brokers provide a quick way to communicate useful information to users.</Text>
+
+            {/* <Text styles="mt-4">I am also expected to research tech, provide coding standards, and support my team's development.</Text> */}
+            {/* <ListElement>choosing the right tech, and building for cross-platform (love u, expo)</ListElement> */}
+
+            {/* <ListElement>setting coding standards, and providing abstractions to support fast development</ListElement> */}
         </>
     );
 };
