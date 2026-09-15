@@ -22,7 +22,7 @@ export default function TopBar() {
             </div>
 
             {/* center nav icons and search bar */}
-            <div className="flex items-center py-[6px] w-[100%] justify-center">
+            <div className="flex items-center h-full py-[6px] bg-[#3c3c3c] z-30">
                 <div className="flex items-center *:mx-[4px] mx-1">
                     <div className="group flex justify-center items-center relative">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke={styles.arrowsColor} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg>
@@ -37,7 +37,7 @@ export default function TopBar() {
                         </span>
                     </div>
                 </div>
-                <div className="flex group justify-center relative items-center h-full *:mx-1 px-[15%] mx-2 bg-[#464646] hover:bg-[#4d4d4d] border-[1.5px] border-solid border-[#ffffff25] hover:border-[#ffffff40] rounded-sm cursor-pointer z-20">
+                <div className="flex group justify-center relative items-center h-full *:mx-1 px-[200px] mx-2 bg-[#464646] hover:bg-[#4d4d4d] border-[1.5px] border-solid border-[#ffffff25] hover:border-[#ffffff40] rounded-sm cursor-pointer z-20">
                     <div className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffffbb" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
