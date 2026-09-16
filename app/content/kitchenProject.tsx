@@ -9,13 +9,15 @@ export default function KitchenProject() {
         <Header size="large">Kitchen</Header>
         <div className="flex flex-row">
             <div className="mr-auto pr-8">
-                <Text styles="text-lg">Cooking is chemistry, and I like chemistry, but I like cooking more because you can eat what you cook!</Text>
-                <Text>My wife and I have a bunch of recipes that we like to cook, and I wanted to create a cool interactive kitchen-cookbook to naviagate through them.</Text>
-                <Text>I had a lot of fun with this project! There's bunch of goofy features like manipulating gravity or throwing your ingredients around the kitchen.</Text>
+                <Link href="https://kitchen-lilac.vercel.app">
+                    <img src={kitchen} height={800} width={800} />
+                </Link>
             </div>
-            <Link href="https://kitchen-lilac.vercel.app">
-                <img src={kitchen} height={500} width={500} />
-            </Link>
+            <div>
+                <Text styles="text-lg">Cooking is chemistry, and I like chemistry, but I like cooking more because you can eat what you cook!</Text>
+                <Text>My wife and I have a bunch of recipes, and I wanted to create a cool interactive kitchen-cookbook web app to naviagate through them.</Text>
+                <Text>I had a lot of fun with this project! There's bunch of goofy features like manipulating gravity and throwing your ingredients around the kitchen.</Text>
+            </div>
         </div>
 
         <Header size="medium">Built With</Header>
