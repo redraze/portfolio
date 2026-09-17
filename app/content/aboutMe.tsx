@@ -40,31 +40,33 @@ export default function AboutMe() {
             {/* <Text>Look around - you might find some easter eggs!</Text> */}
 
             <Header size={'medium'}>Features (Hobbies)</Header>
+            <ListElement>Frisbee, hiking, biking, cold plunging at Alki</ListElement>
+            <ListElement>Gaming and anime</ListElement>
             <ListElement>
                 <a href="https://github.com/redraze" target="_blank" rel="noopener noreferrer">
                     Software Development
                 </a>
             </ListElement>
-            <ListElement>Frisbee, hiking, biking, cold plunging at Alki</ListElement>
-            <ListElement>Gaming and anime</ListElement>
             <ListElement onClick={openKitchenContent}>Cooking!</ListElement>
 
             <Header size={'medium'}>Deployment (Traveling)</Header>
             <Text>Currently living in West Seattle, WA, but I've lived all over the place:</Text>
 
             <Header size="small">🌏 Shanghai, China</Header>
-            <ListElement>Taught English there from 2015 to 2018</ListElement>
+            <ListElement>Lived and worked as and English teacher from 2015 to 2018</ListElement>
             <ListElement>Gained Mandarin Chinese proficiency up to about HSK2 (my favorite part was writing)</ListElement>
-            <ListElement>My food love affairs: 牛肉拉面, 红烧猪肉, 上海生煎馒头, 小笼包</ListElement>
+            <ListElement>Food love affairs: 牛肉拉面, 红烧猪肉, 上海生煎馒头, 小笼包</ListElement>
             <ListElement>Visited: Japan, South Korea, Thailand, and the UAE in the middle of July because I'm so smart</ListElement>
 
             <Header size="small" styles="mt-4">🌍 Kyiv, Ukraine</Header>
             <ListElement>Слава Україна!</ListElement>
             <ListElement>Lived there from 2018 to 2020</ListElement>
             <ListElement>Favorite spots in the city:
-                <ListElement>Graffiti covered water overflow channel going from Lybidska to Olimpiiska</ListElement>
-                <ListElement>Having breakfeast with the street artists near Arsenalna</ListElement>
-                <ListElement>Parkouring through the abandoned docks along the Dnipro near Hidropark</ListElement>
+                <ul style={{ 'listStyle': 'unset' }}>
+                    <ListElement>Graffiti covered water overflow channel going from Lybidska to Olimpiiska</ListElement>
+                    <ListElement>Having breakfeast with the street artists near Arsenalna</ListElement>
+                    <ListElement>Parkouring through the abandoned docks along the Dnipro near Hidropark</ListElement>
+                </ul>
             </ListElement>
             <ListElement>I still don't speak Ukrainian very well, but my wife would love for me to learn 😅</ListElement>
             <ListElement>Visited: The Carpathians, Odesa, ☢️Chornobyl☢️, Germany, Italy, Greece, and Poland</ListElement>
