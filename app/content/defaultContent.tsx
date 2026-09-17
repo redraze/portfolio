@@ -6,10 +6,13 @@ import FilingCabinet from "~/components/filingCabinet/filingCabinet";
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useContentStore } from "~/lib/contentStore";
 import { useEventStore } from "~/lib/eventStore";
+import { fileNameKeys, fileSystemMap } from "~/lib/fileStructure";
 
 export default function DefaultContent() {
     const content = useContentStore((state) => state.content);
+    const setContent = useContentStore((state) => state.setContent);
     const clearContent = useContentStore((state) => state.clearContent);
+
     const gaming = useEventStore((state) => state.gaming);
     
     const [hovered, setHover] = useState(false);
@@ -34,7 +37,12 @@ export default function DefaultContent() {
         }, 100);
 
         return () => clearInterval(interval);
-    }, [gaming])
+    }, [gaming]);
+
+    useEffect(() => {
+        const content = fileSystemMap[fileNameKeys.ABOUTME];
+        setContent(content);
+    }, []);
 
     return (
         <div className="flex grow relative">
