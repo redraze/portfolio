@@ -56,7 +56,7 @@ export default function AboutMe() {
             <ListElement>Lived and worked as and English teacher from 2015 to 2018</ListElement>
             <ListElement>Gained Mandarin Chinese proficiency up to about HSK2 (my favorite part was writing)</ListElement>
             <ListElement>Food love affairs: 牛肉拉面, 红烧猪肉, 上海生煎馒头, 小笼包</ListElement>
-            <ListElement>Visited: Japan, South Korea, Thailand, and the UAE in the middle of July because I'm so smart</ListElement>
+            <ListElement>Visited Japan, South Korea, Thailand, and the UAE in the middle of July because I'm so smart</ListElement>
 
             <Header size="small" styles="mt-4">🌍 Kyiv, Ukraine</Header>
             <ListElement>Слава Україна!</ListElement>
@@ -69,7 +69,7 @@ export default function AboutMe() {
                 </ul>
             </ListElement>
             <ListElement>I still don't speak Ukrainian very well, but my wife would love for me to learn 😅</ListElement>
-            <ListElement>Visited: The Carpathians, Odesa, ☢️Chornobyl☢️, Germany, Italy, Greece, and Poland</ListElement>
+            <ListElement>Visited the Carpathians, Odesa, ☢️Chornobyl☢️, Germany, Italy, Greece, and Poland</ListElement>
         </section>
     );
 };

@@ -5,7 +5,7 @@ import { files, folders } from "~/lib/fileStructure";
 
 export default function FileExplorer() {
     return (
-        <nav aria-label="file-explorer" className="bg-[#252526] w-[350px]">
+        <nav aria-label="file-explorer" className="bg-[#252526] w-[300px]">
             <FileExplorerTopBar />
 
             <div className="text-[15.5px]">

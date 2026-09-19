@@ -22,7 +22,7 @@ export default function KitchenProject() {
 
         <Header size="medium">Built With</Header>
         <ListElement><Link href="https://nextjs.org">Nextjs</Link>, <Link href="https://react.dev">React</Link>, and <Link href="https://threejs.org">Three.js</Link> before it was cool</ListElement>
-        <ListElement><Link href="https://www.mongodb.com">MongoDB</Link> and <Link href="https://graphql.org">GraphQL</Link> (a relational DB probably would have suited this project better, but I wanted to learn GraphQL)</ListElement>
+        <ListElement><Link href="https://www.mongodb.com">MongoDB</Link> and <Link href="https://graphql.org">GraphQL</Link> (a relational DB probably would have suited this project better)</ListElement>
         <ListElement><Link href="https://vercel.com">Vercel</Link> for hosting</ListElement>
 
         <Header size="medium">Looking Back</Header>
